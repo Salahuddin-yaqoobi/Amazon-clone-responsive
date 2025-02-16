@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>Amazon Product Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .blurred {
+            filter: blur(0px);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Amazon Navbar -->
+    <header class="bg-gray-900 text-white p-4 w-full">
+        <div class="max-w-[1300px] mx-auto flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-bold hover:underline">amazon<span class="text-orange-400 hover:underline">.fr</span></h1>
+                <p class="text-sm hover:underline hidden lg:block"><span>📍</span> Delivery in <span class="font-bold hover:underline">France</span></p>
+            </div>
+
+            <!-- Search Bar Container -->
+            <div class="flex items-center bg-white rounded-lg shadow-md overflow-hidden w-full lg:w-[630px]">
+                <input type="text" class="w-full p-2 text-gray-700 outline-none" placeholder="Search on Amazon">
+                <button class="bg-yellow-400 p-3 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-black text-2xl">search</span>
+                </button>
+            </div>
+
+            <nav class="flex space-x-6">
+                <a href="#" class="hover:underline hidden lg:block">Good morning! <br> <span class="font-bold">Account and lists</span></a>
+                <a href="#" class="hover:underline hidden lg:block">Back <br> <span class="font-bold">And The Orders</span></a>
+                <a href="#" class="hover:underline">🛒 Cart</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Urgency Timer -->
+    <div class="bg-yellow-400 text-center text-black font-bold p-2 w-full">
+        Hurry, offer ends in: <span id="timer" class="font-bold text-red-700">09:28:25</span>
+    </div>
+
+    <!-- Main Product Section -->
+    <div class="max-w-[1300px] mx-auto mt-6 flex flex-col lg:flex-row bg-white p-4 lg:p-6 shadow-lg rounded-lg">
+        <!-- Left: Smaller Product Images Section -->
+        <div class="md:w-1/5 flex flex-row lg:flex-col items-center space-x-2 lg:space-x-0 lg:space-y-2 overflow-x-auto lg:overflow-visible">
+            <img src="./1.webp" class="w-16 h-16 blurred rounded-lg flex-shrink-0">
+            <img src="./2.webp" class="w-16 h-16 blurred rounded-lg flex-shrink-0">
+            <img src="./3.webp" class="w-16 h-16 blurred rounded-lg flex-shrink-0">
+        </div>
+
+        <!-- Middle: Centralized Product Info -->
+        <div class="w-full lg:w-2/5 text-center flex flex-col justify-center relative mt-4 lg:mt-0">
+            <div class="relative">
+                <!-- 🔄 Left Button -->
+                <button id="prevBtn" onclick="prevImage()" 
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </button>
+
+                <!-- 🌟 Main Product Image -->
+                <img id="mainImage" src="./1.webp" 
+                    class="w-full h-full object-cover rounded-lg cursor-pointer ">
+
+                <!-- 🔄 Right Button -->
+                <button id="nextBtn" onclick="nextImage()" 
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined">arrow_forward_ios</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-4 ml-10">
+            <h2 class="text-2xl font-semibold text-black">
+                Moët & Chandon Brut Imperial Champagne Box (6 bottles)
+            </h2>
+            
+            <!-- Ratings -->
+            <div class="flex items-center space-x-2 mt-1">
+                <span class="text-blue-600 text-sm font-semibold">4.6</span>
+                <span class="text-yellow-500 text-lg">★★★★☆</span>
+                <span class="text-blue-600 text-sm font-semibold hover:underline cursor-pointer">234 ratings</span>
+            </div>
+        
+            <!-- Badges -->
+            <div class="flex items-center space-x-2 mt-2">
+                <span class="bg-orange-500 text-white px-2 py-1 text-xs font-bold rounded-md">
+                    #1 Best Seller
+                </span>
+                <span class="bg-gray-800 text-white px-2 py-1 text-xs font-bold rounded-md">
+                    Amazon's Choice
+                </span>
+            </div>
+        
+            <!-- Purchase Info -->
+            <p class="text-green-600 text-sm font-semibold mt-1">
+                600+ purchased in the last month
+            </p>
+            <hr class="border-t border-gray-300 my-4">
+            <!-- ✅ Limited Time Offer Box -->
+            <div class="bg-transparent p-4  rounded-lg  w-full flex-col align-center justify-center">
+                <!-- 🔥 Limited Time Offer Badge -->
+                <span class="bg-red-500 text-white font-bold text-xs px-2 py-1 rounded">
+                    Limited Time Offer
+                </span>
+
+                <!-- 💰 Discounted Price -->
+                <div class="text-2xl font-bold text-red-600 mt-2">-96% 9.99€</div>
+                <p class="text-gray-500 text-sm line-through">Previous price: <span class="text-gray-400">299€</span></p>
+
+                <!-- ✅ Stock Info -->
+                <p class="text-green-700 font-bold mt-2">In stock: <span id="stockCount">72</span> units</p>
+
+                <!-- 🖼️ Product Thumbnails -->
+                <div class="flex items-center space-x-2 mt-3">
+                    <!-- Out of Stock Thumbnail -->
+                    <div class="text-center cursor-not-allowed text-gray-500">
+                        <img src="./1.webp" class="w-12 h-16 rounded-md opacity-50 border border-gray-300">
+                        <p class="text-xs text-gray-500 mt-1">Out of stock</p>
+                    </div>
+
+                    <!-- Selected Product Thumbnail -->
+                    <div class="text-center">
+                        <img src="./2.webp" class="w-12 h-16 rounded-md border-2 border-red-500">
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-t border-gray-300 my-4">
+
+            <div class="max-w-[1300px] mx-auto mt-6 bg-white p-6 shadow-lg rounded-lg">
+                <h3 class="text-xl font-bold text-black">Congratulations!</h3>
+                <p class="text-gray-700 text-sm">
+                    Amazon Special Offer: Moët & Chandon Brut Imperial Champagne Gift Set (6 Bottles) for only <strong>€9.99</strong>!
+                </p>
+            
+                <!-- Question Box -->
+                <div id="question-container">
+                    <!-- Question 1 -->
+                    <div id="question-1" class="question-block">
+                        <div class="bg-green-500 text-white font-bold p-2 mt-2 rounded-md w-max">
+                            Question 1 of 3:
+                        </div>
+                        <p class="mt-1 text-black font-semibold">Are you from France?</p>
+                
+                        <div class="mt-4 space-y-2">
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold" onclick="nextQuestion(1,2)">Yes</button>
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold" onclick="nextQuestion(1,2)">No</button>
+                        </div>
+                    </div>
+                
+                    <!-- Question 2 -->
+                    <div id="question-2" class="question-block hidden">
+                        <div class="bg-green-500 text-white font-bold p-2 mt-2 rounded-md w-max">
+                            Question 2 of 3:
+                        </div>
+                        <p class="mt-1 text-black font-semibold">How did you find out about the promotion?</p>
+                
+                        <div class="mt-4 space-y-2">
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold" onclick="nextQuestion(2,3)">Thanks to social networks</button>
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold" onclick="nextQuestion(2,3)">From friends/acquaintances</button>
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold" onclick="nextQuestion(2,3)">From our newsletter</button>
+                        </div>
+                    </div>
+                
+                    <!-- Question 3 -->
+                    <div id="question-3" class="question-block hidden">
+                        <div class="bg-green-500 text-white font-bold p-2 mt-2 rounded-md w-max">
+                            Question 3 of 3:
+                        </div>
+                        <p class="mt-1 text-black font-semibold">What is your favorite type of Moët champagne?</p>
+                
+                        <div class="mt-4 space-y-2">
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold">Imperial Brut</button>
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold">Imperial Rosé</button>
+                            <button class="w-full bg-yellow-400 text-black py-2 rounded-full hover:bg-yellow-500 font-bold">Imperial Nectar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Limited Time Offer -->
+        <div class="md:w-2/5 flex flex-col justify-center items-center mt-6 lg:mt-[-400px]">
+            <div class="border border-gray-300 rounded-lg lg:ml-10 p-6 w-full lg:w-auto">
+                <span class="bg-red-500 text-white font-bold text-xs px-2 py-1 rounded">
+                    Limited Time Offer
+                </span>
+                <p class="text-black font-semibold mt-2">Previous price: <span class="line-through">299€</span></p>
+                <p class="text-red-600 font-bold text-2xl mt-2">9.99€</p>
+                <p id="delivery-date" class="text-black font-semibold mt-2"></p>
+                <p class="text-black font-semibold mt-2">
+                    Order within <span class="text-green-500">12 hrs 28 min</span>
+                </p>
+                <div class="flex items-center text-teal-600 font-semibold">
+                    <span class="material-symbols-outlined">
+                        location_on
+                    </span>
+                    <span>Delivery in France</span>
+                </div>
+                
+                <p class="text-black font-semibold mt-2">In stock: 68 units</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Congratulations Section -->
+    <hr class="border-t border-gray-300 my-4">
+    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 max-w-[1300px] mx-auto mt-6">
+        <h2 class="text-lg font-bold text-gray-900">More product information</h2>
+        <p class="text-gray-700 mt-2">
+            Moët & Chandon – a renowned champagne house, and one of the largest producers of champagne in the world.
+            On the occasion of its 150th anniversary, the house has produced a record number of bottles for lovers 
+            and fans of its creations! Right now, take advantage of a unique opportunity: acquire this iconic 
+            champagne at a promotional price in anticipation of the holidays! Don't miss the opportunity to 
+            treat yourself and your loved ones, as stocks are limited!
+        </p>
+    </div>
+
+    <hr class="border-t border-gray-300 my-4">
+    <!-- Amazon Review Box -->
+    <div class="w-full mt-6">
+        <div class="bg-gray-200 p-6 rounded-lg text-center mx-auto max-w-[1293px]">
+            <h3 class="text-2xl font-bold">amazon</h3>
+            <p class="text-gray-700 mt-2">Comments on this product</p>
+            <p class="text-yellow-500 text-xl font-bold mt-2">★★★★★ 4.6</p>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6 p-4">
+        <!-- Customer Reviews Section -->
+        <div class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">Customer reviews</h2>
+            <div class="flex items-center space-x-2 mt-2">
+                <span class="text-yellow-500 text-xl">★★★★★</span>
+                <span class="text-gray-900 font-semibold">4.6 out of 5</span>
+            </div>
+            <p class="text-gray-600 text-sm">234 overall ratings</p>
+    
+            <div class="mt-4 space-y-2">
+                <div class="flex items-center space-x-2 group">
+                    <a href="#" class="text-blue-600 text-sm group-hover:underline">5 stars</a>
+                    <div class="w-2/3 bg-gray-200 rounded-full h-3">
+                        <div class="bg-orange-400 h-3 rounded-full group-hover:bg-orange-500" style="width: 75%;"></div>
+                    </div>
+                    <span class="text-gray-700 text-sm group-hover:text-orange-500">75%</span>
+                </div>
+                <div class="flex items-center space-x-2 group">
+                    <a href="#" class="text-blue-600 text-sm group-hover:underline">4 stars</a>
+                    <div class="w-2/3 bg-gray-200 rounded-full h-3">
+                        <div class="bg-orange-400 h-3 rounded-full group-hover:bg-orange-500" style="width: 12%;"></div>
+                    </div>
+                    <span class="text-gray-700 text-sm group-hover:text-orange-500">12%</span>
+                </div>
+                <div class="flex items-center space-x-2 group">
+                    <a href="#" class="text-blue-600 text-sm group-hover:underline">3 stars</a>
+                    <div class="w-2/3 bg-gray-200 rounded-full h-3">
+                        <div class="bg-orange-400 h-3 rounded-full group-hover:bg-orange-500" style="width: 9%;"></div>
+                    </div>
+                    <span class="text-gray-700 text-sm group-hover:text-orange-500">9%</span>
+                </div>
+                <div class="flex items-center space-x-2 group">
+                    <a href="#" class="text-blue-600 text-sm group-hover:underline">2 stars</a>
+                    <div class="w-2/3 bg-gray-200 rounded-full h-3">
+                        <div class="bg-orange-400 h-3 rounded-full group-hover:bg-orange-500" style="width: 3%;"></div>
+                    </div>
+                    <span class="text-gray-700 text-sm group-hover:text-orange-500">3%</span>
+                </div>
+                <div class="flex items-center space-x-2 group">
+                    <a href="#" class="text-blue-600 text-sm group-hover:underline">1 star</a>
+                    <div class="w-2/3 bg-gray-200 rounded-full h-3">
+                        <div class="bg-orange-400 h-3 rounded-full group-hover:bg-orange-500" style="width: 1%;"></div>
+                    </div>
+                    <span class="text-gray-700 text-sm group-hover:text-orange-500">1%</span>
+                </div>
+            </div>
+            
+    
+            <hr class="my-4 border-gray-300">
+    
+            <h3 class="text-md font-bold text-gray-900">Give your opinion on this product</h3>
+            <p class="text-gray-600 text-sm">Share your thoughts with other customers</p>
+    
+            <button class="mt-3 w-full bg-white text-gray-900 font-semibold border border-gray-300 py-2 rounded-md hover:bg-gray-100">
+                Write a customer review
+            </button>
+        </div>
+    
+        <!-- Review Details Section -->
+        <div class="w-full lg:w-2/3 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">The best comments from France</h2>
+            
+            <!-- Reviewer Info -->
+            <div class="flex items-center space-x-3 mt-3">
+                <img src="./1.webp" class="w-10 h-10 rounded-full">
+                <span class="text-gray-900 font-semibold">Isabelle Dupont</span>
+            </div>
+    
+            <!-- Tags -->
+            <div class="mt-2 flex space-x-2">
+                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs font-semibold rounded-full">✅ Value</span>
+                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs font-semibold rounded-full">✅ Price</span>
+                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs font-semibold rounded-full">✅ Speed</span>
+                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs font-semibold rounded-full">✅ Organization</span>
+                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs font-semibold rounded-full">✅ Quality</span>
+            </div>
+    
+            <!-- ⭐ Star Rating -->
+            <div class="mt-2 flex items-center">
+                <span class="text-yellow-500 text-lg">★★★★★</span>
+            </div>
+    
+            <!-- Date & Purchase Info -->
+            <p class="text-sm text-gray-600 mt-1">
+                Review left in France on <span class="font-semibold">February, 16 2025</span> · 
+                <span class="text-orange-600 font-semibold">Verified purchase</span>
+            </p>
+    
+            <!-- Review Text -->
+            <p class="text-gray-900 mt-3 text-sm">
+                WOW!!! I placed an order for me, my husband, mom, dad, and my sister... Yesterday we received 5 cases of MOËT champagne for 50 euros!!! 🐱 
+                To compare, I looked in the store yesterday - 1 bottle costs 50 euros ))))). But 2 bottles were cracked 😢, but I'm so happy that I was able to order on sale 🔥🎁💋 
+                One bottle is already open 👌 SUPER!!! 😁😁😉😻
+            </p>
+    
+            <!-- Review Image -->
+            <div class="mt-5">
+                <img src="./2.webp" class="w-48 rounded-lg shadow-md">
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <!-- 🔼 Back to Top -->
+        <div class="bg-gray-700 py-3 text-sm text-center cursor-pointer" onclick="scrollToTop()">
+            <a href="#" class="text-white font-semibold">Back to the top</a>
+        </div>
+    
+        <!-- 🌎 Language & Country Selection -->
+        <div class="flex justify-center items-center space-x-3 mt-4">
+            <span class="text-gray-400 text-sm"><span class="material-symbols-outlined">
+                language
+                </span></span>
+            <span class="text-white font-semibold">FRENCH</span>
+            <img src="./france.webp" alt="France Flag" class="w-6 h-4 inline-block">
+
+            <span class="text-white">FRANCE</span>
+        </div>
+    
+        <!-- 🛒 Amazon Logo -->
+        <div class="mt-3">
+            <img src="./amazon new1.jpg" alt="Amazon Logo" class="w-11 h-auto mx-auto">
+
+        </div>
+    
+        <!-- 💳 Payment Methods -->
+        <div class="flex flex-wrap justify-center gap-4 mt-4">
+            <img src="./visa.avif" alt="Visa" class="h-6 lg:h-8">
+            <img src="./maes.png" alt="Maestro" class="h-6 lg:h-8">
+            <img src="./master card.jpeg" alt="MasterCard" class="h-6 lg:h-8">
+            <img src="./american.png" alt="American Express" class="h-6 lg:h-8">
+        </div>
+    
+        <!-- ⚖ Legal Links -->
+        <div class="mt-4 text-gray-400 text-xs flex flex-col lg:flex-row justify-center space-y-2 lg:space-y-0 lg:space-x-6">
+            <a href="#" class="hover:underline">Conditions of sale</a>
+            <a href="#" class="hover:underline">Your personal information</a>
+            <a href="#" class="hover:underline">Cookies</a>
+            <a href="#" class="hover:underline">Interest-Based Advertising</a>
+        </div>
+    
+        <!-- © Copyright -->
+        <div class="mt-3 text-gray-400 text-xs">
+            © 1996-2024, Amazon.com, Inc. or its affiliates
+        </div>
+    </footer>
+    
+
+    <!-- JavaScript for Image Carousel -->
+    <script>
+     // List of images
+     const images = ["./1.webp", "./2.webp", "./3.webp"]; 
+    let currentImageIndex = 0;
+
+    // Function to update the image and disable buttons if needed
+    function updateImage() {
+        document.getElementById("mainImage").src = images[currentImageIndex];
+
+        // Get buttons
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        // Disable "Prev" button if at the first image
+        if (currentImageIndex === 0) {
+            prevBtn.disabled = true;
+        } else {
+            prevBtn.disabled = false;
+        }
+
+        // Disable "Next" button if at the last image
+        if (currentImageIndex === images.length - 1) {
+            nextBtn.disabled = true;
+        } else {
+            nextBtn.disabled = false;
+        }
+    }
+
+    // Function for next image
+    function nextImage() {
+        if (currentImageIndex < images.length - 1) {
+            currentImageIndex++;
+            updateImage();
+        }
+    }
+
+    // Function for previous image
+    function prevImage() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateImage();
+        }
+    }
+
+    // Initialize button states on page load
+    updateImage();
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function nextQuestion(current, next) {
+        document.getElementById("question-" + current).classList.add("hidden");
+        document.getElementById("question-" + next).classList.remove("hidden");
+    }
+    function formatDate(date) {
+        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    const today = new Date();
+    const futureDate = new Date();
+    futureDate.setDate(today.getDate() + 2); // Adjust the days as needed
+
+    document.getElementById("delivery-date").innerText = `Delivery ${formatDate(futureDate)}`;
+
+    </script>
+
+</body>
+</html>
