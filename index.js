@@ -1,5 +1,5 @@
  // List of images
- const images = ["./1.webp", "./2.webp", "./3.webp"]; 
+ const images = ["./images/1.webp", "./images/2.webp", "./images/3.webp"]; 
  let currentImageIndex = 0;
 
  // Function to update the image and disable buttons if needed
