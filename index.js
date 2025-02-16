@@ -68,3 +68,21 @@ function showFinalStep() {
     // You can add functionality here for what happens after the last question
     alert("Thank you for completing the questions!");
 }
+
+
+function toggleImage(cardNumber) {
+    // Get the front and back images for the clicked card
+    const frontImage = document.getElementById(`front${cardNumber}`);
+    const backImage = document.getElementById(`back${cardNumber}`);
+
+    // Check if the front image is currently visible
+    if (!frontImage.classList.contains('hidden')) {
+        // If front is visible, switch to back
+        frontImage.classList.add('hidden');
+        backImage.classList.remove('hidden');
+    } else {
+        // If back is visible, switch to front
+        frontImage.classList.remove('hidden');
+        backImage.classList.add('hidden');
+    }
+}

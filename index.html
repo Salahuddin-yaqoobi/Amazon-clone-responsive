@@ -11,13 +11,38 @@
             filter: blur(0px);
             opacity: 0.6;
         }
+
+        @keyframes spinBox {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(15deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Add this new shake animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        /* Add hover style for the box images */
+        .box-image:hover {
+            animation: shake 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-white font-sans">
-    <!-- Preloader -->
+    <!-- Preloader
     <div id="preloader" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
         <img src="./images/amazon logo.png" alt="Amazon Logo" class="w-48 h-auto animate-[pulse_3s_ease-in-out_infinite]">
-    </div>
+    </div> -->
 
     <!-- Amazon Navbar -->
     <header class="bg-[#222f3e] text-white px-4 py-1 w-full h-[50px] fixed top-0 left-0 z-50">
@@ -66,582 +91,143 @@
         <span id="timer2" class="font-medium text-black bg-white w-[25px] h-[22px] mx-[2px] rounded flex items-center justify-center">26</span>:
         <span id="timer3" class="font-medium text-black bg-white w-[25px] h-[22px] mx-[2px] rounded flex items-center justify-center">38</span>
     </div>
-    
-    <!-- Content (Add Margin to Prevent Overlap) -->
-    <div class="mt-[72px]">
-        <!-- Other page content here -->
-    
-    
 
-    <!-- Main Product Section -->
-    <div class="max-w-[1300px] mx-auto mt-6 flex flex-col lg:flex-row bg-white p-4 lg:p-6  rounded-lg">
-        <!-- Left: Smaller Product Images Section -->
-        <div class="md:w-1/5 flex flex-row lg:flex-col items-center space-x-2 lg:space-x-0 lg:space-y-2 overflow-x-auto lg:overflow-visible">
-            <img src="./images/1.webp" class="w-16 h-16 opacity-60 rounded-lg flex-shrink-0 cursor-pointer hover:opacity-100">
-            <img src="./images/2.webp" class="w-16 h-16 opacity-60 rounded-lg flex-shrink-0 cursor-pointer hover:opacity-100">
-            <img src="./images/3.webp" class="w-16 h-16 opacity-60 rounded-lg flex-shrink-0 cursor-pointer hover:opacity-100">
-        </div>
 
-        <!-- Middle: Centralized Product Info -->
-        <div class="w-full lg:w-3/5 text-center flex flex-col justify-center relative mt-4 lg:mt-[-150px]">
-            <div class="relative">
-                <!-- Left Button -->
-                <button id="prevBtn" onclick="prevImage()" 
-                    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-gray-600 text-xl">chevron_left</span>
-                </button>
 
-                <!-- Main Product Image -->
-                <img id="mainImage" src="./images/1.webp" 
-                    class="w-full h-[650px] object-contain rounded-lg cursor-zoom-in">
 
-                <!-- Right Button -->
-                <button id="nextBtn" onclick="nextImage()" 
-                    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-gray-600 text-xl">chevron_right</span>
-                </button>
+<!--     
+    <div class="2nd-section mt-[65px]">
+        <div class="flex flex-col items-center justify-center py-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined text-3xl text-green-500 animate-spin">progress_activity</span>
+                <h3 class="text-xl font-medium">You answered question 3/3!</h3>
             </div>
-        </div>
-
-        <div class="mt-4 ml-10">
-            <h2 class="text-2xl font-medium text-[#0F1111]">
-                Moet & Chandon Brut Imperial Champagne Box (6 bottles)
-            </h2>
             
-            <!-- Ratings -->
-            <div class="flex items-center space-x-2 mt-1">
-                <span class="text-[#007185] text-sm">4.6</span>
-                <div class="flex text-[#F5A623] text-sm">★★★★☆</div>
-                <a href="#" class="text-[#007185] text-sm hover:underline">234 ratings</a>
-            </div>
-        
-            <!-- Badges -->
-            <div class="flex items-center space-x-2 mt-2">
-                <span class="bg-[#CC0C39] text-white px-2 py-1 text-xs font-medium rounded">
-                    #1 Best Seller
-                </span>
-                <span class="bg-[#002F36] text-white px-2 py-1 text-xs font-medium rounded flex items-center">
-                    Amazon's <span class="text-[#F69931] ml-1">Choice</span>
-                </span>
-            </div>
-        
-            <!-- Purchase Info -->
-            <p class="text-[#007600] text-sm mt-1">
-                600+ purchased in the last month
+            <p class="text-gray-600">The user's IP address does not allow any conclusions to be drawn about previous requests.</p>
+            <h3 class="text-xl font-medium">We have successfully received your answers.</h3>
 
-            </p>
-            <hr class="border-t border-gray-200 my-4">
-            <!-- ✅ Limited Time Offer Box -->
-            <div class="bg-transparent p-4  rounded-lg  w-full flex-col align-center justify-center">
-                <!-- 🔥 Limited Time Offer Badge -->
-                <span class="bg-red-500 text-white font-bold text-xs px-2 py-1 rounded">
-                    Limited Time Offer
-                </span>
-
-                <!-- 💰 Discounted Price -->
-                <div class="text-2xl font-bold text-red-600 mt-2">-96% 9.99€</div>
-                <p class="text-gray-500 text-sm line-through">Previous price: <span class="text-gray-400">299€</span></p>
-
-                <!-- ✅ Stock Info -->
-                <p class="text-green-700 font-bold mt-2">In stock: <span id="stockCount">72</span> units</p>
-
-                <!-- 🖼️ Product Thumbnails -->
-                <div class="flex items-center space-x-2 mt-3">
-                    <!-- Out of Stock Thumbnail -->
-                    <div class="text-center cursor-not-allowed text-gray-500">
-                        <img src="./images/1.webp" class="w-12 h-16 rounded-md opacity-50 border border-gray-300">
-                        <p class="text-xs text-gray-500 mt-1">Out of stock</p>
-                    </div>
-
-                    <!-- Selected Product Thumbnail -->
-                    <div class="text-center">
-                        <img src="./images/2.webp" class="w-12 h-16 rounded-md border-2 border-red-500">
-                    </div>
-                </div>
-            </div>
-
-            <hr class="border-t border-gray-300 my-4">
-
-            <!-- Question Section -->
-            <div class="max-w-[1300px] mx-auto bg-white p-4">
-                <h2 class="text-2xl font-bold text-[#0F1111]">Congratulations!</h2>
-                
-                <p class="text-[#0F1111] mt-2 text-sm leading-tight">
-                    Amazon Special Offer: Moet & Chandon Brut Imperial Champagne Gift Set (6 Bottles) for only <span class="font-bold">€9.99</span>!
-                </p>
-
-                <p class="text-[#0F1111] mt-2 text-sm leading-tight">
-                    To enter the promotion, you must answer a few questions and confirm that you are a real person.
-                </p>
-
-                <p class="text-[#0F1111] mt-2 text-sm leading-tight">
-                    Hurry, quantities are limited!
-                </p>
-
-                <!-- Question Box -->
-                <div id="question-container">
-                    <!-- Question 1 -->
-                    <div id="question-1" class="mt-3">
-                        <span class="inline-block bg-[#5cb85c] text-white text-xs px-2 py-1">
-                            Question 1 of 3:
-                        </span>
-                        <p class="text-[#0F1111] font-medium mt-2">Are you from France?</p>
-                        <div class="mt-3 space-y-2">
-                            <button onclick="nextQuestion(1,2)" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                Yes
-                            </button>
-                            <button onclick="nextQuestion(1,2)" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                No
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Question 2 (Hidden Initially) -->
-                    <div id="question-2" class="mt-3 hidden">
-                        <span class="inline-block bg-[#5cb85c] text-white text-xs px-2 py-1">
-                            Question 2 of 3:
-                        </span>
-                        <p class="text-[#0F1111] font-medium mt-2">How did you find out about the promotion?</p>
-                        <div class="mt-3 space-y-2">
-                            <button onclick="nextQuestion(2,3)" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                Thanks to social networks
-                            </button>
-                            <button onclick="nextQuestion(2,3)" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                From friends/acquaintances
-                            </button>
-                            <button onclick="nextQuestion(2,3)" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                From our newsletter
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Question 3 (Hidden Initially) -->
-                    <div id="question-3" class="mt-3 hidden">
-                        <span class="inline-block bg-[#5cb85c] text-white text-xs px-2 py-1">
-                            Question 3 of 3:
-                        </span>
-                        <p class="text-[#0F1111] font-medium mt-2">What is your favorite type of Moët champagne?</p>
-                        <div class="mt-3 space-y-2">
-                            <button onclick="showFinalStep()" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                Imperial Brut
-                            </button>
-                            <button onclick="showFinalStep()" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                Imperial Rosé
-                            </button>
-                            <button onclick="showFinalStep()" 
-                                class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-3 rounded-full">
-                                Imperial Nectar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div> -->
 
-        <!-- Right: Limited Time Offer -->
-        <div class="w-[300px] bg-white">
-            <div class="border border-gray-200 rounded p-4">
-                <!-- Limited Time Offer Badge -->
-                <span class="bg-[#CC0C39] text-white text-xs px-2 py-1 rounded-sm font-medium">
-                    Limited Time Offer
-                </span>
 
-                <!-- Price Section -->
-                <div class="flex items-baseline mt-2 space-x-1">
-                    <span class="text-[#CC0C39] text-xl">-96%</span>
-                    <span class="text-xl font-medium">9.99€</span>
-                </div>
 
-                <!-- Previous Price -->
-                <p class="text-gray-600 text-sm">
-                    Previous price: <span class="line-through">299€</span>
-                </p>
 
-                <!-- Delivery Info -->
-                <div class="mt-3 text-[#0F1111]">
-                    <p class="text-sm">
-                        Delivery <span class="font-bold">Wednesday</span>,<br>
-                        <span class="font-bold">February 19</span>
-                    </p>
-                    <p class="text-sm mt-1">
-                        Order within<span class="text-[#007600]"> 5 hrs 0 min</span>
-                    </p>
-                </div>
 
-                <!-- Delivery Location -->
-                <div class="flex items-center mt-2 text-[#007185] text-sm">
-                    <span class="material-symbols-outlined text-base mr-1">location_on</span>
-                    <span class="hover:text-[#C7511F] hover:underline cursor-pointer">Delivery in France</span>
-                </div>
 
-                <!-- Stock Info -->
-                <p class="text-[#007600] text-sm mt-2">
-                    In stock: 69 units
-                </p>
+
+    <div class="3rd-section">
+    <div class="mt-[65px] max-w-[600px] mx-auto">
+        <div class="grid grid-cols-3 gap-[-60px] justify-items-center">
+            <!-- Card 1 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(1)">
+                <img src="./images/box1.webp" id="front1" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box3.webp" id="back1" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 2 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(2)">
+                <img src="./images/box1.webp" id="front2" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box2.webp" id="back2" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 3 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(3)">
+                <img src="./images/box1.webp" id="front3" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box2.webp" id="back3" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 4 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(4)">
+                <img src="./images/box1.webp" id="front4" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box2.webp" id="back4" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 5 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(5)">
+                <img src="./images/box1.webp" id="front5" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box3.webp" id="back5" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 6 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(6)">
+                <img src="./images/box1.webp" id="front6" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box2.webp" id="back6" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 7 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(7)">
+                <img src="./images/box1.webp" id="front7" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box3.webp" id="back7" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+
+            <!-- Card 8 -->
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(8)">
+                <img src="./images/box1.webp" id="front8" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box2.webp" id="back8" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
+            </div>
+            <div class="relative w-[170px] h-[170px] cursor-pointer" onclick="toggleImage(9)">
+                <img src="./images/box1.webp" id="front9" class="w-full h-full object-cover absolute transition-opacity duration-300 box-image">
+                <img src="./images/box3.webp" id="back9" class="w-full h-full object-cover absolute hidden transition-opacity duration-300">
             </div>
         </div>
     </div>
-
-    <!-- More Product Information Section -->
-    <hr class="border-t border-gray-300 my-4">
-    <div class="bg-white p-6 max-w-[1300px] mx-auto mt-6">
-        <h2 class="text-2xl font-bold text-[#333333]">More product information</h2>
-        <p class="text-[#333333] mt-4 text-md leading-relaxed font-medium">
-            Moët & Chandon – a renowned champagne house, and one of the largest producers of champagne in the world. 
-            On the occasion of its 150th anniversary, the house has produced a record number of bottles for lovers 
-            and fans of its creations! Right now, take advantage of a unique opportunity: acquire this iconic 
-            champagne at a promotional price in anticipation of the holidays! Don't miss the opportunity to 
-            treat yourself and your loved ones, as stocks are limited!
-        </p>
-    </div>
-
-    <hr class="border-t border-gray-300 my-4">
-    <!-- Amazon Review Box -->
-    <div class="w-full mt-6">
-        <div class="bg-[#F7F7F7] p-6 rounded-lg text-center mx-auto max-w-[1293px] flex flex-col items-center">
-            <!-- Amazon Logo (Centered and Enlarged) -->
-            <img src="./images/amazon logo.png" alt="Amazon Logo" class="w-24 h-auto object-contain mb-2">
-    
-            <p class="text-[#0F1111]">Comments on this product</p>
-    
-            <!-- Star Rating -->
-            <p class="text-black text-lg font-bold mt-1">
-                <span class="text-[#FFA41C]">★★★★★</span> 4.6
-            </p>
-        </div>
-    </div>
-    
-    
-
-    <!-- Reviews Section -->
-    <div class="max-w-[1300px] mx-auto mt-6 p-4">
-        <div class="flex">
-            <!-- Left Side: Customer Reviews Stats -->
-            <div class="w-1/4">
-                <h2 class="text-xl text-black font-bold">Customer reviews</h2>
-                
-                <!-- Star Rating -->
-                <div class="flex items-center mt-2">
-                    <div class="flex text-3xl text-[#FFA41C]">
-                        <span>★★★★</span>
-                        <span class="relative">
-                          <span class="absolute left-0 top-0 overflow-hidden w-1/2 text-[#FFA41C]">★</span>
-                          <span class="text-[#FFA41C] opacity-50">★</span>
-                        </span>
-                      </div>
-                      
-                    <span class="ml-2 text-black text-lg">4.6 out of 5</span>
-                </div>
-                
-                <p class="text-[#565959] text-sm mt-1">234 overall ratings</p>
-
-                <!-- Rating Bars -->
-                <div class="mt-4 space-y-2">
-                    <div class="flex items-center text-sm group cursor-pointer">
-                        <a href="#" class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14">5 stars</a>
-                        <div class="w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
-                            <div class="h-full bg-[#FFA41C]" style="width: 75%"></div>
-                        </div>
-                        <span class="text-[#0F1111] ml-1 group-hover:text-[#C7511F]">75%</span>
-                    </div>
-                    <div class="flex items-center text-sm group cursor-pointer">
-                        <a href="#" class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14">4 stars</a>
-                        <div class="w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
-                            <div class="h-full bg-[#FFA41C]" style="width: 12%"></div>
-                        </div>
-                        <span class="text-[#0F1111] ml-1 group-hover:text-[#C7511F]">12%</span>
-                    </div>
-                    <div class="flex items-center text-sm group cursor-pointer">
-                        <a href="#" class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14">3 stars</a>
-                        <div class="w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
-                            <div class="h-full bg-[#FFA41C]" style="width: 9%"></div>
-                        </div>
-                        <span class="text-[#0F1111] ml-1 group-hover:text-[#C7511F]">9%</span>
-                    </div>
-                    <div class="flex items-center text-sm group cursor-pointer">
-                        <a href="#" class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14">2 stars</a>
-                        <div class="w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
-                            <div class="h-full bg-[#FFA41C]" style="width: 3%"></div>
-                        </div>
-                        <span class="text-[#0F1111] ml-1 group-hover:text-[#C7511F]">3%</span>
-                    </div>
-                    <div class="flex items-center text-sm group cursor-pointer">
-                        <a href="#" class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14">1 star</a>
-                        <div class="w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
-                            <div class="h-full bg-[#FFA41C]" style="width: 1%"></div>
-                        </div>
-                        <span class="text-[#0F1111] ml-1 group-hover:text-[#C7511F]">1%</span>
-                    </div>
-                </div>
-                
-
-                <!-- Write Review Section -->
-                <div class="mt-4 border-t border-gray-300 pt-4">
-                    <h3 class="text-black font-bold mb-4">Give your opinion on this product</h3>
-                    <p class="text-sm text-[#0F1111] mt-1 mb-4">Share your thoughts with other customers</p>
-                
-                    <button class="mt-2 w-full bg-white border border-gray-300 hover:bg-gray-100 text-sm text-[#0F1111] py-2 px-4 rounded shadow-md">
-                        Write a customer review
-                    </button>
-                
-                    <div class="mt-4 h-[1px] bg-gray-300 shadow-md"></div>
-                </div>
-                
-            </div>
-
-            <!-- Right Side: The best comments from France -->
-            <div class="w-3/4 pl-16">
-                <h2 class="text-xl text-black font-bold">The best comments from France</h2>
-                
-                <!-- Individual Review -->
-                <div class="mt-4 gap-[6px]">
-                    <!-- Reviewer Info -->
-                    <div class="flex items-center space-x-2">
-                        <img src="./images/dp1.webp" class="w-8 h-8 rounded-full">
-                        <span class="text-[#0F1111]">Isabelle Dupont</span>
-                    </div>
-
-                    <!-- Review Tags -->
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        <div class="flex gap-2">
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Value
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Price
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Speed
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Organization
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Quality
-                            </span>
-                        </div>
-                        
-                    </div>
-
-                    <!-- Star Rating -->
-                    <div class="flex text-[#FFA41C] mt-2">★★★★★</div>
-
-                    <!-- Review Info -->
-                    <div class="flex items-center mt-1 text-sm">
-                        <span class="text-[#565959]">Review left in France on February, 16 2025</span>
-                        <span class="text-[#FF9900] font-medium ml-2">Verified purchase</span>
-                    </div>
-
-                    <!-- Review Text -->
-                    <p class="mt-2 text-sm text-[#0F1111] leading-relaxed">
-                        WOW!!! I placed an order for me, my husband, mom, dad and my sister... Yesterday we received 5 cases of MOËT champagne for 50 euros!!! 😱 To compare, I looked in the store yesterday - 1 bottle costs 50 euros ))). But 2 bottles were cracked 😢, but I'm so happy that I was able to order on sale 🤑🎁 One bottle is already open 🍾 SUPER!!! 🥂🍾🥂😋🥂
-                    </p>
-
-                    <!-- Review Image -->
-                    <div class="mt-4">
-                        <img src="./images/dp1image.webp" class="w-48 rounded">
-                    </div>
-                </div>
-                <div class="mt-4 gap-[6px]">
-                    <!-- Reviewer Info -->
-                    <div class="flex items-center space-x-2">
-                        <img src="./images/dp2.webp" class="w-8 h-8 rounded-full">
-                        <span class="text-[#0F1111]">Claire Lefevre</span>
-                    </div>
-
-                    <!-- Review Tags -->
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        <div class="flex gap-2">
-                            
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Speed
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                               Apperance
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Organization
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Quality
-                            </span>
-                        </div>
-                        
-                    </div>
-
-                    <!-- Star Rating -->
-                    <div class="flex text-[#FFA41C] mt-2">★★★★★</div>
-
-                    <!-- Review Info -->
-                    <div class="flex items-center mt-1 text-sm">
-                        <span class="text-[#565959]">Review left in France on February, 16 2025</span>
-                        <span class="text-[#FF9900] font-medium ml-2">Verified purchase</span>
-                    </div>
-
-                    <!-- Review Text -->
-                    <p class="mt-2 text-sm text-[#0F1111] leading-relaxed">
-                        Unbelievable!!! 😳 I can't believe my luck: I'm going to taste MOËT for only €1.95!!!
-                    </p>
-
-                    <!-- Review Image -->
-                    <div class="mt-4">
-                        <img src="./images/dp2image.webp" class="w-48 rounded">
-                    </div>
-                </div>
-                <div class="mt-4 gap-[6px]">
-                    <!-- Reviewer Info -->
-                    <div class="flex items-center space-x-2">
-                        <img src="./images/dp3.webp" class="w-8 h-8 rounded-full">
-                        <span class="text-[#0F1111]">Pierre Dubois</span>
-                    </div>
-
-                    <!-- Review Tags -->
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        <div class="flex gap-2">
-                            
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Organization
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Quality
-                            </span>
-                        </div>
-                        
-                    </div>
-
-                    <!-- Star Rating -->
-                    <div class="flex text-[#FFA41C] mt-2">★★★★★</div>
-
-                    <!-- Review Info -->
-                    <div class="flex items-center mt-1 text-sm">
-                        <span class="text-[#565959]">Review left in France on February, 15 2025</span>
-                        <span class="text-[#FF9900] font-medium ml-2">Verified purchase</span>
-                    </div>
-
-                    <!-- Review Text -->
-                    <p class="mt-2 text-sm text-[#0F1111] leading-relaxed">
-                        I had it delivered to the office right away, and the delivery was super fast! Thank you very much 👍
-                    </p>
-
-                    <!-- Review Image -->
-                    <div class="mt-4">
-                        <img src="./images/dp3image.webp" class="w-48 rounded">
-                    </div>
-                </div>
-                <div class="mt-4 gap-[6px]">
-                    <!-- Reviewer Info -->
-                    <div class="flex items-center space-x-2">
-                        <img src="./images/dp3.webp" class="w-8 h-8 rounded-full">
-                        <span class="text-[#0F1111]">Sophie Martin</span>
-                    </div>
-
-                    <!-- Review Tags -->
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        <div class="flex gap-2">
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Value
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Price
-                            </span>
-                            <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
-                                <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                Size
-                            </span>
-                            
-                        </div>
-                        
-                    </div>
-
-                    <!-- Star Rating -->
-                    <div class="flex text-[#FFA41C] mt-2">★★★★★</div>
-
-                    <!-- Review Info -->
-                    <div class="flex items-center mt-1 text-sm">
-                        <span class="text-[#565959]">Review left in France on February, 14 2025</span>
-                        <span class="text-[#FF9900] font-medium ml-2">Verified purchase</span>
-                    </div>
-
-                    <!-- Review Text -->
-                    <p class="mt-2 text-sm text-[#0F1111] leading-relaxed">
-                        This is a real gem! Amazon, I love you!! You helped create a perfect evening ❤️ A bottle of sparkling wine and my loved ones around - HAPPINESS!! We have already ordered for all our friends and family, we can't wait 🥰
-                    </p>
-
-                    <!-- Review Image -->
-                    <div class="mt-4">
-                        <img src="./images/dp4image.webp" class="w-48 rounded">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        
-    </div>
-
-    <!-- 🔼 Back to Top Button (Separate from Footer) -->
-<div class="bg-gray-700 py-3 text-sm text-center cursor-pointer w-full">
-    <a href="#" class="text-white font-semibold block w-full">Back to the top</a>
 </div>
 
-<!-- 🏁 Footer Section -->
-<footer class="bg-gray-800 text-white text-center py-6">
-    <!-- 🌐 Language & Country Selection -->
-    <div class="flex justify-center items-center space-x-3 mt-4">
-        <span class="text-gray-400 text-sm"><span class="material-symbols-outlined">language</span></span>
-        <span class="text-white font-semibold">FRENCH</span>
-        <img src="./images/france.webp" alt="France Flag" class="w-6 h-4 inline-block">
-        <span class="text-white">FRANCE</span>
-    </div>
 
-    <!-- 🛒 Amazon Logo -->
-    <div class="h-20">
-        <img src="./images/amazon logo footer.png" alt="Amazon Logo" class="w-[150px] h-auto mx-auto">
-    </div>
 
-    <!-- 💳 Payment Methods -->
-    <div class="flex flex-wrap justify-center gap-4 mt-4">
-        <img src="./images/visa.avif" alt="Visa" class="h-6 lg:h-8">
-        <img src="./images/maes.png" alt="Maestro" class="h-6 lg:h-8">
-        <img src="./images/master card.jpeg" alt="MasterCard" class="h-6 lg:h-8">
-        <img src="./images/american.png" alt="American Express" class="h-6 lg:h-8">
-    </div>
+    <!-- Modal -->
+    <!-- <div id="dabamodal" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-2xl pt-2 pb-2 pl-14 pr-14 max-w-md mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+            <div class="w-[200px] h-[200px] mx-auto mb-2">
+                <img src="./images/box1.webp" alt="Box" class="w-full h-full object-contain animate-[spinBox_3s_ease-in-out_infinite]">
+            </div>
 
-    <!-- ⚖ Legal Links -->
-    <div class="mt-4 text-gray-400 text-xs flex flex-col lg:flex-row justify-center space-y-2 lg:space-y-0 lg:space-x-6">
-        <a href="#" class="hover:underline">Conditions of sale</a>
-        <a href="#" class="hover:underline">Your personal information</a>
-        <a href="#" class="hover:underline">Cookies</a>
-        <a href="#" class="hover:underline">Interest-Based Advertising</a>
-    </div>
+            <div class="space-y-4 p-0">
+                <p class="text-gray-500 font-normal text-2xl">
+                    You have successfully confirmed  
+                    <span class="text-gray-500"> that you are a real person.</span>
+                </p>
+                <p class="text-md font-bold">
+                    Votre choix n'a l'heure pas gagner <br>
+                    You have the chance to win
+                    Moet & Chandon Brut Imperial Champagne Box (6 bottles) at the special price of €9.99 !
+                </p>
+                <p class="text-sm text-dark">All you have to do now is choose the right gift.</p>
+                <p class="text-sm text-dark">You have 3 tries, good luck!
+                </p>
 
-    <!-- © Copyright -->
-    <div class="mt-3 text-gray-400 text-xs">
-        © 1996-2024, Amazon.com, Inc. or its affiliates
-    </div>
-</footer>
 
+                <button class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div> -->
+
+ <!-- Modal -->
+ <!-- <div id="dabamodal" class="fixed inset-0 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+     
+
+        <div class="space-y-6 p-0">
+            <p class="text-gray-500 font-bold text-2xl">
+                OHHH...
+            </span>
+            </p>
+        
+            <p class="text-lg text-dark">Sorry, but this box is empty! (2) attempts remaining.
+
+            </p>
+
+            <button class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+                OK
+            </button>
+        </div>
+    </div>
 </div>
-    
+ -->
+
+
 
     <!-- JavaScript for Image Carousel -->
     <script src="index.js">
