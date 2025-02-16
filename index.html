@@ -14,6 +14,10 @@
     </style>
 </head>
 <body class="bg-white font-sans">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
+        <img src="./images/amazon logo.png" alt="Amazon Logo" class="w-48 h-auto animate-[pulse_3s_ease-in-out_infinite]">
+    </div>
 
     <!-- Amazon Navbar -->
     <header class="bg-[#222f3e] text-white px-4 py-1 w-full h-[50px] fixed top-0 left-0 z-50">
@@ -641,6 +645,21 @@
 
     <!-- JavaScript for Image Carousel -->
     <script src="index.js">
+    </script>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                preloader.style.transition = 'opacity 0.5s ease';
+                
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 3000);
+        });
     </script>
 
 </body>
