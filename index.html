@@ -37,6 +37,64 @@
         .box-image:hover {
             animation: shake 0.5s ease-in-out;
         }
+
+        /* Add this class for the checkmark overlay */
+        .checkmark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Add these essential confetti styles */
+        .confetti-container {
+            perspective: 700px;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .confetti {
+            position: absolute;
+            z-index: 1;
+            top: -10px;
+            border-radius: 0%;
+        }
+
+        .confetti--animation-slow {
+            animation: confetti-slow 2.25s linear 1 forwards;
+        }
+
+        .confetti--animation-medium {
+            animation: confetti-medium 1.75s linear 1 forwards;
+        }
+
+        .confetti--animation-fast {
+            animation: confetti-fast 1.25s linear 1 forwards;
+        }
+
+        @keyframes confetti-slow {
+            0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+            100% { transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg); }
+        }
+
+        @keyframes confetti-medium {
+            0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+            100% { transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg); }
+        }
+
+        @keyframes confetti-fast {
+            0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+            100% { transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg); }
+        }
     </style>
 </head>
 <body class="bg-white font-sans">
@@ -93,10 +151,10 @@
         <span id="timer3" class="font-medium text-black bg-white w-[25px] h-[22px] mx-[2px] rounded flex items-center justify-center">38</span>
     </div>
 
+    <!-- Update the confetti container to have all necessary styles -->
+    <div class="js-container container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; overflow: hidden;"></div>
 
-
-
-<!--     
+    <!--     
     <div class="2nd-section mt-[65px]">
         <div class="flex flex-col items-center justify-center py-8">
             <div class="flex items-center gap-3 mb-4">
@@ -414,6 +472,63 @@
                 }, 500);
             }, 3000);
         });
+
+        function toggleImage(index) {
+            const frontImage = document.getElementById(`front${index}`);
+            const backImage = document.getElementById(`back${index}`);
+            const boxContainer = frontImage.parentElement;
+
+            // First, check if this box hasn't been clicked already
+            if (boxContainer.querySelector('.checkmark-overlay')) {
+                return; // Exit if already clicked
+            }
+
+            // Show the back image
+            frontImage.style.display = 'none';
+            backImage.style.display = 'block';
+
+            // Check if this is a winning box (box3.webp)
+            if (backImage.src.includes('box3.webp')) {
+                // Create and add checkmark overlay
+                const checkmarkOverlay = document.createElement('div');
+                checkmarkOverlay.className = 'checkmark-overlay';
+                checkmarkOverlay.innerHTML = `
+                    <div class="checkmark-circle">
+                        <div class="background"></div>
+                        <div class="checkmark draw"></div>
+                    </div>
+                `;
+                boxContainer.appendChild(checkmarkOverlay);
+
+                // Start confetti
+                startConfetti();
+            }
+        }
+
+        function startConfetti() {
+            const container = document.querySelector('.js-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                const confettiSize = (Math.floor(Math.random() * 3) + 7) + 'px';
+                
+                confetti.style.width = confettiSize;
+                confetti.style.height = confettiSize;
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = ['#EF2964', '#00C09D', '#2D87B0', '#48485E','#EFFF1D'][Math.floor(Math.random() * 5)];
+                
+                confetti.className = 'confetti confetti--animation-' + ['slow', 'medium', 'fast'][Math.floor(Math.random() * 3)];
+                
+                const confettiContainer = document.createElement('div');
+                confettiContainer.className = 'confetti-container';
+                confettiContainer.appendChild(confetti);
+                container.appendChild(confettiContainer);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confettiContainer.remove();
+                }, 3000);
+            }
+        }
     </script>
 
 </body>
