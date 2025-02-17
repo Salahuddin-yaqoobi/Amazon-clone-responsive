@@ -264,30 +264,29 @@
     </div> -->
 
  <!-- Modal -->
- <!-- <div id="dabamodal" class="fixed inset-0 z-50 flex items-center justify-center">
-    <div class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+  
+ <div id="dabamodal" class="fixed inset-0 z-50 items-center justify-center hidden opacity-0 transition-all duration-500 ease-in-out">
+    <div class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
      
 
         <div class="space-y-6 p-0">
             <p class="text-gray-500 font-bold text-2xl">
                 OHHH...
-            </span>
             </p>
         
-            <p class="text-lg text-dark">Sorry, but this box is empty! (2) attempts remaining.
+            <p class="text-lg text-dark">Sorry, but this box is empty! (<span id="attemptsRemaining">2</span>) attempts remaining.</p>
 
-            </p>
-
-            <button class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+            <button onclick="hideModal()" class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
                 OK
             </button>
         </div>
     </div>
 </div>
- -->
- <!-- Success modal
-    <div id="bottlemodal" class="fixed inset-0 z-50 flex items-center justify-center">
-        <div class="bg-white rounded-2xl pt-2 pb-2 pl-14 pr-14 max-w-lg mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+
+ <!-- Success modal -->
+ 
+    <div id="bottlemodal" class="fixed inset-0 z-50 items-center justify-center hidden opacity-0 transition-all duration-500 ease-in-out">
+        <div class="bg-white rounded-2xl pt-2 pb-2 pl-14 pr-14 max-w-lg mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
             <div class="w-[250px] h-[250px] mx-auto mb-0">
                 <img src="./images/1.webp" alt="Box" class="w-full h-[300px]">
             </div>
@@ -306,12 +305,12 @@
                 </div>
 
 
-                <button class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+                <button onclick="hideSuccessModal()" class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
                     OK
                 </button>
             </div>
         </div>
-    </div> -->
+    </div>
 
      <!-- payment section
     <div class="flex justify-center items-center mt-[100px] mb-12 ml-[100px]">
@@ -340,7 +339,6 @@
             </div>
         </div>
     </div>
-
     <div class="max-w-7xl mx-auto px-8">
         <div class="flex flex-col md:flex-row gap-8">
             
@@ -473,15 +471,21 @@
             }, 3000);
         });
 
+        let attempts = 3;
+
         function toggleImage(index) {
             const frontImage = document.getElementById(`front${index}`);
             const backImage = document.getElementById(`back${index}`);
             const boxContainer = frontImage.parentElement;
+            const modal = document.getElementById('dabamodal');
+            const successModal = document.getElementById('bottlemodal');
 
-            // First, check if this box hasn't been clicked already
-            if (boxContainer.querySelector('.checkmark-overlay')) {
-                return; // Exit if already clicked
+            // Check if this box has already been opened (either front image is hidden or back image is visible)
+            if (frontImage.style.display === 'none' || backImage.style.display === 'block') {
+                return; // Exit if box was already opened
             }
+
+            attempts--;
 
             // Show the back image
             frontImage.style.display = 'none';
@@ -502,7 +506,58 @@
 
                 // Start confetti
                 startConfetti();
+
+                // Show success modal after 500ms
+                setTimeout(() => {
+                    successModal.style.display = 'flex';
+                    successModal.offsetHeight;
+                    successModal.classList.add('opacity-100');
+                    successModal.querySelector('.bg-white').classList.add('scale-100');
+                    successModal.querySelector('.bg-white').classList.remove('scale-95');
+                }, 500);
+            } else {
+                // Show the "OHHH..." modal for non-winning boxes after 500ms
+                setTimeout(() => {
+                    modal.style.display = 'flex';
+                    modal.offsetHeight;
+                    modal.classList.add('opacity-100');
+                    modal.querySelector('.bg-white').classList.add('scale-100');
+                    modal.querySelector('.bg-white').classList.remove('scale-95');
+                }, 500);
+
+                const attemptsSpan = document.getElementById('attemptsRemaining');
+                attemptsSpan.textContent = attempts;
             }
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('dabamodal');
+            const modalContent = modal.querySelector('.bg-white');
+            
+            // Start fade out animation
+            modal.classList.remove('opacity-100');
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+            
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        function hideSuccessModal() {
+            const modal = document.getElementById('bottlemodal');
+            const modalContent = modal.querySelector('.bg-white');
+            
+            // Start fade out animation
+            modal.classList.remove('opacity-100');
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+            
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
         }
 
         function startConfetti() {
