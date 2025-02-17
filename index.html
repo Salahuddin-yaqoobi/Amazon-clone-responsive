@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>Amazon Product Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css">
     <style>
         .blurred {
             filter: blur(0px);
@@ -35,6 +36,64 @@
         /* Add hover style for the box images */
         .box-image:hover {
             animation: shake 0.5s ease-in-out;
+        }
+
+        /* Add this class for the checkmark overlay */
+        .checkmark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Add these essential confetti styles */
+        .confetti-container {
+            perspective: 700px;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .confetti {
+            position: absolute;
+            z-index: 1;
+            top: -10px;
+            border-radius: 0%;
+        }
+
+        .confetti--animation-slow {
+            animation: confetti-slow 2.25s linear 1 forwards;
+        }
+
+        .confetti--animation-medium {
+            animation: confetti-medium 1.75s linear 1 forwards;
+        }
+
+        .confetti--animation-fast {
+            animation: confetti-fast 1.25s linear 1 forwards;
+        }
+
+        @keyframes confetti-slow {
+            0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+            100% { transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg); }
+        }
+
+        @keyframes confetti-medium {
+            0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+            100% { transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg); }
+        }
+
+        @keyframes confetti-fast {
+            0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+            100% { transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg); }
         }
     </style>
 </head>
@@ -92,10 +151,10 @@
         <span id="timer3" class="font-medium text-black bg-white w-[25px] h-[22px] mx-[2px] rounded flex items-center justify-center">38</span>
     </div>
 
+    <!-- Update the confetti container to have all necessary styles -->
+    <div class="js-container container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; overflow: hidden;"></div>
 
-
-
-<!--     
+    <!--     
     <div class="2nd-section mt-[65px]">
         <div class="flex flex-col items-center justify-center py-8">
             <div class="flex items-center gap-3 mb-4">
@@ -113,9 +172,9 @@
 
 
 
+<!-- 
 
-
-    <div class="3rd-section">
+    <!-- <div class="3rd-section"> -->
     <div class="mt-[65px] max-w-[600px] mx-auto">
         <div class="grid grid-cols-3 gap-[-60px] justify-items-center">
             
@@ -171,7 +230,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
@@ -205,30 +264,29 @@
     </div> -->
 
  <!-- Modal -->
- <!-- <div id="dabamodal" class="fixed inset-0 z-50 flex items-center justify-center">
-    <div class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+  
+ <div id="dabamodal" class="fixed inset-0 z-50 items-center justify-center hidden opacity-0 transition-all duration-500 ease-in-out">
+    <div class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
      
 
         <div class="space-y-6 p-0">
             <p class="text-gray-500 font-bold text-2xl">
                 OHHH...
-            </span>
             </p>
         
-            <p class="text-lg text-dark">Sorry, but this box is empty! (2) attempts remaining.
+            <p class="text-lg text-dark">Sorry, but this box is empty! (<span id="attemptsRemaining">2</span>) attempts remaining.</p>
 
-            </p>
-
-            <button class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+            <button onclick="hideModal()" class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
                 OK
             </button>
         </div>
     </div>
 </div>
- -->
- <!-- Success modal
-    <div id="bottlemodal" class="fixed inset-0 z-50 flex items-center justify-center">
-        <div class="bg-white rounded-2xl pt-2 pb-2 pl-14 pr-14 max-w-lg mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+
+ <!-- Success modal -->
+ 
+    <div id="bottlemodal" class="fixed inset-0 z-50 items-center justify-center hidden opacity-0 transition-all duration-500 ease-in-out">
+        <div class="bg-white rounded-2xl pt-2 pb-2 pl-14 pr-14 max-w-lg mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
             <div class="w-[250px] h-[250px] mx-auto mb-0">
                 <img src="./images/1.webp" alt="Box" class="w-full h-[300px]">
             </div>
@@ -247,15 +305,152 @@
                 </div>
 
 
-                <button class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+                <button onclick="hideSuccessModal()" class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
                     OK
                 </button>
             </div>
         </div>
-    </div> -->
+    </div>
 
+     <!-- payment section
+    <div class="flex justify-center items-center mt-[100px] mb-12 ml-[100px]">
+        <div class="flex items-center">
+         
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+                <p class="text-sm mt-1 font-bold">Lottery</p>
+            </div>
 
+            
+            <div class="w-48 h-[4px] bg-black -mx-5" style="margin-top: -24px"></div>
 
+           
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+                <p class="text-sm mt-1 font-bold">Order details</p>
+            </div>
+
+        
+            <div class="w-48 h-[4px] bg-gray-300 -mx-[18px]" style="margin-top: -24px"></div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg">3</div>
+                <p class="text-sm mt-1 text-gray-500 font-bold">Pay</p>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="flex flex-col md:flex-row gap-8">
+            
+            <div class="md:w-3/5 bg-white rounded-lg p-1 w-full">
+                <div class="mb-8 flex flex-row justify-between">
+                    <h2 class="text-md mb-4 text-[#545454]">Delivery</h2>
+                    <div class="flex flex-col space-y-4 ml-[180px] w-full">
+                        <div class="relative group">
+                            <span class="absolute text-xs text-gray-500 top-1 left-2">City</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute text-xs text-gray-500 top-1 left-2">Address</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute text-xs text-gray-500 top-1 left-2">Postal code</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="w-full border-t-1 border-gray-300 my-5">
+                <div class="mb-8 flex flex-row justify-between ">
+                    <h2 class="text-md mb-4 text-[#545454]">Payment</h2>
+                    <div class="flex flex-col space-y-4 ml-[180px] w-full">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-black rounded-full relative overflow-hidden">
+                                <div class="w-4 h-1 absolute top-0 left-0 bg-white rounded-t-full"></div>
+                            </div>
+                            <span class="ml-2 text-sm font-medium text-gray-900">Pay by card online</span>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                <hr class="w-full border-t-1 border-gray-300 my-2">
+
+                
+                
+
+                <div class="mb-8 flex flex-row justify-between mt-[35px]">
+                    <h2 class="text-md mb-4 text-[#545454]">Personal Information</h2>
+                    <div class="flex flex-col space-y-4 ml-[130px] w-full">
+                        <div class="relative group">
+                            <span class="absolute text-xs text-gray-500 top-1 left-2">First name</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute text-xs text-gray-500 top-1 left-2">Surname</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                        <div class="relative group h-16">
+                            <span class="absolute text-xs text-gray-500 top-0 left-2 mb-2 mt-1">Phone number</span>
+                            <img src="./images/france.webp" class="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3" alt="icon">
+                            <span class="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-500 text-md">+33</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full pl-14 mt-1" type="text">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute text-xs text-gray-500 top-1 left-2 mb-4">Email</span>
+                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="email">
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold" onclick="this.previousElementSibling.value = ''">close</span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="w-full border-t-1 border-gray-300 my-2">
+                <div class="mb-0 flex flex-row justify-between">
+                    <div class="flex flex-col space-y-0 ml-[550px] w-full">
+                        <button class="bg-yellow-500 hover:bg-yellow-500 text-black text-lg py-1 px-0 w-[87px] h-14 rounded-full flex items-center justify-center">
+                            Go Play
+                        </button>
+                    </div>
+                </div>
+            </div>
+          
+           
+            <div class="md:w-2/5 bg-white rounded-lg border-l p-6">
+                <div class="mb-6 flex flex-row">
+                    <img src="./images/1.webp" alt="Moet & Chandon Champagne" class="w-16 rounded-lg mb-4 ml-4">
+                    <div class="flex flex-col ml-[18px]">
+                        <p class="text-sm font-bold text-[#353535] text-xl">Moet & Chandon Brut Imperial Champagne Box (6 bottles)</p>
+                        <div class="flex flex-row">
+                            <p class="text-sm text-[#545454] text-xl mr-4 text-decoration-line: line-through">299€</p>
+                            <p class="text-sm font-bold text-[#353535] text-xl">9.99€</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="w-full border-t-1 border-gray-300 my-3">
+                
+   
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-[#333333]">Order details</h3>
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <span class="text-gray-600">Order value</span>
+                        <span class="font-semibold">9.99€</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <span class="text-gray-600">Delivery</span>
+                        <span class="font-semibold">0€</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-2">
+                        <span class="text-gray-600 font-bold">Total Price</span>
+                        <span class="font-semibold">9.99€</span>
+                    </div>
+                </div>   -->
 
 
     <!-- JavaScript for Image Carousel -->
@@ -275,6 +470,120 @@
                 }, 500);
             }, 3000);
         });
+
+        let attempts = 3;
+
+        function toggleImage(index) {
+            const frontImage = document.getElementById(`front${index}`);
+            const backImage = document.getElementById(`back${index}`);
+            const boxContainer = frontImage.parentElement;
+            const modal = document.getElementById('dabamodal');
+            const successModal = document.getElementById('bottlemodal');
+
+            // Check if this box has already been opened (either front image is hidden or back image is visible)
+            if (frontImage.style.display === 'none' || backImage.style.display === 'block') {
+                return; // Exit if box was already opened
+            }
+
+            attempts--;
+
+            // Show the back image
+            frontImage.style.display = 'none';
+            backImage.style.display = 'block';
+
+            // Check if this is a winning box (box3.webp)
+            if (backImage.src.includes('box3.webp')) {
+                // Create and add checkmark overlay
+                const checkmarkOverlay = document.createElement('div');
+                checkmarkOverlay.className = 'checkmark-overlay';
+                checkmarkOverlay.innerHTML = `
+                    <div class="checkmark-circle">
+                        <div class="background"></div>
+                        <div class="checkmark draw"></div>
+                    </div>
+                `;
+                boxContainer.appendChild(checkmarkOverlay);
+
+                // Start confetti
+                startConfetti();
+
+                // Show success modal after 500ms
+                setTimeout(() => {
+                    successModal.style.display = 'flex';
+                    successModal.offsetHeight;
+                    successModal.classList.add('opacity-100');
+                    successModal.querySelector('.bg-white').classList.add('scale-100');
+                    successModal.querySelector('.bg-white').classList.remove('scale-95');
+                }, 500);
+            } else {
+                // Show the "OHHH..." modal for non-winning boxes after 500ms
+                setTimeout(() => {
+                    modal.style.display = 'flex';
+                    modal.offsetHeight;
+                    modal.classList.add('opacity-100');
+                    modal.querySelector('.bg-white').classList.add('scale-100');
+                    modal.querySelector('.bg-white').classList.remove('scale-95');
+                }, 500);
+
+                const attemptsSpan = document.getElementById('attemptsRemaining');
+                attemptsSpan.textContent = attempts;
+            }
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('dabamodal');
+            const modalContent = modal.querySelector('.bg-white');
+            
+            // Start fade out animation
+            modal.classList.remove('opacity-100');
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+            
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        function hideSuccessModal() {
+            const modal = document.getElementById('bottlemodal');
+            const modalContent = modal.querySelector('.bg-white');
+            
+            // Start fade out animation
+            modal.classList.remove('opacity-100');
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+            
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        function startConfetti() {
+            const container = document.querySelector('.js-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                const confettiSize = (Math.floor(Math.random() * 3) + 7) + 'px';
+                
+                confetti.style.width = confettiSize;
+                confetti.style.height = confettiSize;
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = ['#EF2964', '#00C09D', '#2D87B0', '#48485E','#EFFF1D'][Math.floor(Math.random() * 5)];
+                
+                confetti.className = 'confetti confetti--animation-' + ['slow', 'medium', 'fast'][Math.floor(Math.random() * 3)];
+                
+                const confettiContainer = document.createElement('div');
+                confettiContainer.className = 'confetti-container';
+                confettiContainer.appendChild(confetti);
+                container.appendChild(confettiContainer);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confettiContainer.remove();
+                }, 3000);
+            }
+        }
     </script>
 
 </body>
