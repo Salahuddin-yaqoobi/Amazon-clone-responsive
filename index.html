@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <title>Moet & Chandon Brut Imperial Champagne Box</title>
+    <title>Coffret de Champagne Moet & Chandon Brut Impérial</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -131,12 +131,26 @@
         /* Add media query for small screens */
         @media (max-width: 640px) {
             .step-container {
-                gap: 8px; /* Reduce gap between steps */
+                flex-direction: row; /* Ensure steps are in a single row */
+                gap: 4px; /* Reduce gap between steps */
             }
             .step-line {
-                width: 16px; /* Adjust line width */
+                width: 12px; /* Adjust line width for smaller screens */
             }
         }
+
+        /* Increase input width for larger screens */
+        @media (min-width: 1024px) { /* Adjust the min-width as needed */
+            .flex.flex-col.space-y-4.w-full.max-w-xs.mx-auto.lg\:mx-0.lg\:w-2\/3.lg\:ml-auto {
+                max-width: 80%; /* Increase the max-width for larger screens */
+            }
+            .relative.group input {
+                width: 100%; /* Ensure inputs take full width of their container */
+            }
+        }
+
+
+
     </style>
 </head>
 
@@ -154,20 +168,20 @@
             <div class="flex items-center space-x-2">
                 <div class="relative">
                     <!-- Restored original large screen styles while keeping mobile responsive -->
-                    <img src="./images/amazon logo footer.png" alt="Amazon Logo" class="h-32 lg:h-31" width="180px" style="min-width: 80px;">
+                    <img src="./images/amazon logo footer.png" alt="Logo Amazon" class="h-32 lg:h-31" width="180px" style="min-width: 80px;">
                     <span class="absolute top-1/2 -translate-y-1/2 right-2 lg:right-4 text-white text-base lg:text-xl">.fr</span>
                 </div>
                 <!-- Delivery location hidden on mobile -->
                 <p class="text-xs hover:underline hidden lg:flex items-center space-x-1 cursor-pointer">
                     <span class="material-symbols-outlined text-sm">location_on</span>
-                    <span>Delivery in <span class="font-bold"><br>France</span></span>
+                    <span>Livraison en <span class="font-bold"><br>France</span></span>
                 </p>
             </div>
 
             <!-- Search Bar - Adjusted for mobile -->
             <div class="flex items-center bg-white rounded-md overflow-hidden w-[150px] sm:w-[300px] md:w-[320px] lg:w-[660px] h-9 mx-2">
                 <input type="text" class="w-full px-3 text-sm text-gray-700 outline-none"
-                    placeholder="Search on Amazon">
+                    placeholder="Rechercher sur Amazon">
                 <button class="bg-[#febd69] hover:bg-[#f3a847] w-[45px] h-full flex items-center justify-center">
                     <span class="material-symbols-outlined text-neutral-700 text-lg">search</span>
                 </button>
@@ -176,16 +190,16 @@
             <!-- Navigation - Hidden on mobile -->
             <nav class="hidden lg:flex items-center space-x-6 text-xs">
                 <a href="#" class="hover:underline">
-                    Good morning!<br>
-                    <span class="text-sm font-bold">Account and lists</span>
+                    Bonjour!<br>
+                    <span class="text-sm font-bold">Compte et listes</span>
                 </a>
                 <a href="#" class="hover:underline">
-                    Back<br>
-                    <span class="text-sm font-bold">And The Orders</span>
+                    Retour<br>
+                    <span class="text-sm font-bold">Et Les Commandes</span>
                 </a>
                 <a href="#" class="hover:underline flex items-center">
                     <span class="material-symbols-outlined">shopping_cart</span>
-                    <span class="font-bold">Car</span>
+                    <span class="font-bold">Panier</span>
                 </a>
             </nav>
         </div>
@@ -194,7 +208,7 @@
     <!-- Urgency Timer (Fixed Below Header) -->
     <div
         class="bg-[#37475a] text-center text-white text-sm h-[37px] flex items-center justify-center w-full fixed top-[50px] z-50">
-        Hurry, offer ends in:
+        Dépêchez-vous, l'offre se termine dans :
         <span id="timer"
             class="font-medium text-black bg-white w-[25px] h-[22px] mx-[2px] rounded flex items-center justify-center">04</span>:
         <span id="timer2"
@@ -261,29 +275,29 @@
                 
                 <div class="mt-4 ml-2 sm:ml-6 lg:ml-10 px-2 sm:px-4 w-full">
                     <h2 class="text-lg sm:text-xl lg:text-2xl font-medium text-[#0F1111] break-words">
-                        Moet & Chandon Brut Imperial Champagne Box (6 bottles)
+                        Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles)
                     </h2>
 
                     <!-- Ratings -->
                     <div class="flex flex-wrap items-center gap-2 mt-1">
                         <span class="text-[#007185] text-xs sm:text-sm">4.6</span>
                         <div class="flex text-[#F5A623] text-xs sm:text-sm">★★★★☆</div>
-                        <a href="#" class="text-[#007185] text-xs sm:text-sm hover:underline">234 ratings</a>
+                        <a href="#" class="text-[#007185] text-xs sm:text-sm hover:underline">234 évaluations</a>
                     </div>
 
                     <!-- Badges -->
                     <div class="flex flex-wrap items-center gap-2 mt-2">
                         <span class="bg-[#CC0C39] text-white px-2 py-1 text-xs font-medium rounded whitespace-nowrap">
-                            #1 Best Seller
+                            #1 Meilleure Vente
                         </span>
                         <span class="bg-[#002F36] text-white px-2 py-1 text-xs font-medium rounded flex items-center whitespace-nowrap">
-                            Amazon's <span class="text-[#F69931] ml-1">Choice</span>
+                            Choix d'Amazon <span class="text-[#F69931] ml-1">Choix</span>
                         </span>
                     </div>
 
                     <!-- Purchase Info -->
                     <p class="text-[#007600] text-sm mt-1">
-                        600+ purchased in the last month
+                        600+ achetés au cours du dernier mois
 
                     </p>
                     <hr class="border-t border-gray-200 my-4">
@@ -291,19 +305,19 @@
                     <div class="bg-transparent p-2 sm:p-4 rounded-lg w-full flex-col align-center justify-center mt-4">
                         <!-- 🔥 Limited Time Offer Badge -->
                         <span class="bg-red-500 text-white font-bold text-xs px-2 py-1 rounded inline-block">
-                            Limited Time Offer
+                            Offre d'une durée limitée
                         </span>
 
                         <!-- 💰 Discounted Price -->
                         <div class="flex flex-wrap items-baseline gap-2 mt-2">
                             <div class="text-xl sm:text-2xl font-bold text-red-600">-96% 9.99€</div>
                             <p class="text-gray-500 text-xs sm:text-sm line-through">
-                                Previous price: <span class="text-gray-400">299€</span>
+                                Prix précédent: <span class="text-gray-400">299€</span>
                             </p>
                         </div>
 
                         <!-- ✅ Stock Info -->
-                        <p class="text-green-700 font-bold mt-2 text-sm">In stock: <span id="stockCount">72</span> units</p>
+                        <p class="text-green-700 font-bold mt-2 text-sm">En stock: <span id="stockCount">72</span> unités</p>
 
                         <!-- 🖼️ Product Thumbnails -->
                         <div class="flex flex-wrap items-center gap-2 mt-3">
@@ -311,7 +325,7 @@
                             <div class="text-center cursor-not-allowed text-gray-500">
                                 <img src="./images/1.webp"
                                     class="w-10 h-14 sm:w-12 sm:h-16 rounded-md opacity-50 border border-gray-300">
-                                <p class="text-xs text-gray-500 mt-1">Out of stock</p>
+                                <p class="text-xs text-gray-500 mt-1">Rupture de stock</p>
                             </div>
 
                             <!-- Selected Product Thumbnail -->
@@ -325,18 +339,18 @@
 
                     <!-- Question Section -->
                     <div class="max-w-full sm:max-w-[1300px] mx-auto bg-white p-2 sm:p-4 mt-4">
-                        <h2 class="text-xl sm:text-2xl font-bold text-[#0F1111]">Congratulations!</h2>
+                        <h2 class="text-xl sm:text-2xl font-bold text-[#0F1111]">Félicitations!</h2>
 
                         <div class="space-y-2 text-xs sm:text-sm">
                             <p class="text-[#0F1111] leading-tight">
-                                Amazon Special Offer: Moet & Chandon Brut Imperial Champagne Gift Set (6 Bottles) for only
+                                Offre spéciale Amazon: Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles) pour seulement
                                 <span class="font-bold">€9.99</span>!
                             </p>
                             <p class="text-[#0F1111] leading-tight">
-                                To enter the promotion, you must answer a few questions and confirm that you are a real person.
+                                Pour participer à la promotion, vous devez répondre à quelques questions et confirmer que vous êtes une vraie personne.
                             </p>
                             <p class="text-[#0F1111] leading-tight">
-                                Hurry, quantities are limited!
+                                Dépêchez-vous, les quantités sont limitées!
                             </p>
                         </div>
 
@@ -345,17 +359,17 @@
                             <!-- Question 1 -->
                             <div id="question-1" class="mt-3">
                                 <span class="inline-block bg-[#5cb85c] text-white text-xs px-2 py-1">
-                                    Question 1 of 3:
+                                    Question 1 sur 3:
                                 </span>
-                                <p class="text-[#0F1111] font-medium mt-2 text-sm sm:text-base">Are you from France?</p>
+                                <p class="text-[#0F1111] font-medium mt-2 text-sm sm:text-base">Êtes-vous de France?</p>
                                 <div class="mt-3 space-y-2">
                                     <button onclick="nextQuestion(1,2)"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        Yes
+                                        Oui
                                     </button>
                                     <button onclick="nextQuestion(1,2)"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        No
+                                        Non
                                     </button>
                                 </div>
                             </div>
@@ -363,21 +377,21 @@
                             <!-- Question 2 (Hidden Initially) -->
                             <div id="question-2" class="mt-3 hidden">
                                 <span class="inline-block bg-[#5cb85c] text-white text-xs px-2 py-1">
-                                    Question 2 of 3:
+                                    Question 2 sur 3:
                                 </span>
-                                <p class="text-[#0F1111] font-medium mt-2 text-sm sm:text-base">How did you find out about the promotion?</p>
+                                <p class="text-[#0F1111] font-medium mt-2 text-sm sm:text-base">Comment avez-vous connu la promotion?</p>
                                 <div class="mt-3 space-y-2">
                                     <button onclick="nextQuestion(2,3)"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        Thanks to social networks
+                                        Grâce aux réseaux sociaux
                                     </button>
                                     <button onclick="nextQuestion(2,3)"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        From friends/acquaintances
+                                        De la part d'amis/connaissances
                                     </button>
                                     <button onclick="nextQuestion(2,3)"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        From our newsletter
+                                        De notre newsletter
                                     </button>
                                 </div>
                             </div>
@@ -385,22 +399,22 @@
                             <!-- Question 3 (Hidden Initially) -->
                             <div id="question-3" class="mt-3 hidden">
                                 <span class="inline-block bg-[#5cb85c] text-white text-xs px-2 py-1">
-                                    Question 3 of 3:
+                                    Question 3 sur 3:
                                 </span>
-                                <p class="text-[#0F1111] font-medium mt-2 text-sm sm:text-base">What is your favorite type of Moët champagne?
+                                <p class="text-[#0F1111] font-medium mt-2 text-sm sm:text-base">Quel est votre type de champagne Moët préféré?
                                 </p>
                                 <div class="mt-3 space-y-2">
                                     <button onclick="showFinalStep()"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        Imperial Dry
+                                        Brut Impérial
                                     </button>
                                     <button onclick="showFinalStep()"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        Imperial Rosé
+                                        Rosé Impérial
                                     </button>
                                     <button onclick="showFinalStep()"
                                         class="w-full bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] py-2 sm:py-3 rounded-full text-sm">
-                                        Imperial Nectar
+                                        Nectar Impérial
                                     </button>
                                 </div>
                             </div>
@@ -414,7 +428,7 @@
                 <div class="w-full sm:w-[300px] md:w-[350px] lg:w-[400px] bg-white mt-4 sm:mt-0">
                     <div class="border border-gray-200 rounded p-3 sm:p-4">
                         <span class="bg-[#CC0C39] text-white text-xs px-2 py-1 rounded-sm font-medium inline-block">
-                            Limited Time Offer
+                            Offre d'une durée limitée
                         </span>
 
                         <div class="flex flex-wrap items-baseline gap-2 mt-2">
@@ -423,26 +437,26 @@
                         </div>
 
                         <p class="text-gray-600 text-xs sm:text-sm mt-1">
-                            Previous price: <span class="line-through">299€</span>
+                            Prix précédent: <span class="line-through">299€</span>
                         </p>
 
                         <div class="mt-3 text-[#0F1111] space-y-1">
                             <p class="text-xs sm:text-sm">
-                                Delivery <span class="font-bold">Wednesday</span>,<br>
-                                <span class="font-bold">February 19</span>
+                                Livraison <span class="font-bold">mercredi</span>,<br>
+                                <span class="font-bold">19 février</span>
                             </p>
                             <p class="text-xs sm:text-sm">
-                                Order within<span class="text-[#007600]"> 5 hrs 0 min</span>
+                                Commandez dans<span class="text-[#007600]"> 5 heures 0 minutes</span>
                             </p>
                         </div>
 
                         <div class="flex items-center mt-2 text-[#007185] text-xs sm:text-sm">
                             <span class="material-symbols-outlined text-base mr-1">location_on</span>
-                            <span class="hover:text-[#C7511F] hover:underline cursor-pointer">Delivery in France</span>
+                            <span class="hover:text-[#C7511F] hover:underline cursor-pointer">Livraison en France</span>
                         </div>
 
                         <p class="text-[#007600] text-xs sm:text-sm mt-2">
-                            In stock: 69 units
+                            En stock: 69 unités
                         </p>
                     </div>
                 </div>
@@ -455,15 +469,11 @@
             <!-- More Product Information Section -->
             <hr class="border-t border-gray-300 my-4">
             <div class="bg-white p-4 sm:p-6 max-w-[1300px] mx-auto mt-4 sm:mt-6">
-                <h2 class="text-xl sm:text-2xl font-bold text-[#333333] text-center sm:text-left">More product information</h2>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#333333] text-center sm:text-left">Plus d'informations sur le produit</h2>
                 <p class="text-[#333333] mt-3 sm:mt-4 text-md sm:text-md leading-relaxed font-medium px-2 sm:px-0">
-                    Moët & Chandon – a renowned champagne house, and one of the largest producers of champagne in the
-                    world.
-                    On the occasion of its 150th anniversary, the house has produced a record number of bottles for
-                    lovers
-                    and fans of its creations! Right now, take advantage of a unique opportunity: acquire this iconic
-                    champagne at a promotional price in anticipation of the holidays! Don't miss the opportunity to
-                    treat yourself and your loved ones, as stocks are limited!
+                    Moët & Chandon – une maison de champagne renommée, et l'un des plus grands producteurs de champagne au monde.
+                    À l'occasion de son 150ᵉ anniversaire, la maison a produit un nombre record de bouteilles pour les amateurs
+                    et les fans de ses créations! En ce moment, profitez d'une opportunité unique: acquérir ce champagne emblématique à un prix promotionnel en prévision des fêtes! Ne manquez pas l'occasion de vous faire plaisir ainsi qu'à vos proches, car les stocks sont limités!
                 </p>
             </div>
 
@@ -478,7 +488,7 @@
                     <!-- Amazon Logo (Centered and Enlarged) -->
                     <img src="./images/amazon logo.png" alt="Amazon Logo" class="w-24 h-auto object-contain mb-2">
 
-                    <p class="text-[#0F1111]">Comments on this product</p>
+                    <p class="text-[#0F1111]">Commentaires sur ce produit</p>
 
                     <!-- Star Rating -->
                     <p class="text-black text-lg font-bold mt-1">
@@ -494,7 +504,7 @@
                 <div class="flex flex-col lg:flex-row">
                     <!-- Left Side: Customer Reviews Stats -->
                     <div class="w-full lg:w-1/4 px-4 lg:px-0">
-                        <h2 class="text-xl text-black font-bold text-center lg:text-left">Customer reviews</h2>
+                        <h2 class="text-xl text-black font-bold text-center lg:text-left">Avis des clients</h2>
 
                         <!-- Star Rating -->
                         <div class="flex items-center mt-2 justify-center lg:justify-start">
@@ -506,17 +516,17 @@
                                 </span>
                             </div>
 
-                            <span class="ml-2 text-black text-base lg:text-lg">4.6 out of 5</span>
+                            <span class="ml-2 text-black text-base lg:text-lg">4.6 sur 5</span>
                         </div>
 
-                        <p class="text-[#565959] text-sm mt-1 text-center lg:text-left">234 overall ratings</p>
+                        <p class="text-[#565959] text-sm mt-1 text-center lg:text-left">234 avis au total</p>
 
                         <!-- Rating Bars -->
                         <div class="mt-4 space-y-2 max-w-sm mx-auto lg:mx-0">
                             <div class="flex items-center text-sm group cursor-pointer">
                                 <a href="#"
                                     class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14 min-w-[56px]">5
-                                    stars</a>
+                                    étoiles</a>
                                 <div
                                     class="w-full lg:w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
                                     <div class="h-full bg-[#FFA41C]" style="width: 75%"></div>
@@ -526,7 +536,7 @@
                             <div class="flex items-center text-sm group cursor-pointer">
                                 <a href="#"
                                     class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14 min-w-[56px]">4
-                                    stars</a>
+                                    étoiles</a>
                                 <div
                                     class="w-full lg:w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
                                     <div class="h-full bg-[#FFA41C]" style="width: 12%"></div>
@@ -536,7 +546,7 @@
                             <div class="flex items-center text-sm group cursor-pointer">
                                 <a href="#"
                                     class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14 min-w-[56px]">3
-                                    stars</a>
+                                    étoiles</a>
                                 <div
                                     class="w-full lg:w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
                                     <div class="h-full bg-[#FFA41C]" style="width: 9%"></div>
@@ -546,7 +556,7 @@
                             <div class="flex items-center text-sm group cursor-pointer">
                                 <a href="#"
                                     class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14 min-w-[56px]">2
-                                    stars</a>
+                                    étoiles</a>
                                 <div
                                     class="w-full lg:w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
                                     <div class="h-full bg-[#FFA41C]" style="width: 3%"></div>
@@ -556,7 +566,7 @@
                             <div class="flex items-center text-sm group cursor-pointer">
                                 <a href="#"
                                     class="text-[#007185] group-hover:text-[#C7511F] group-hover:underline w-14 min-w-[56px]">1
-                                    star</a>
+                                    étoile</a>
                                 <div
                                     class="w-full lg:w-48 h-4 bg-[#F0F2F2] mx-2 border border-gray-300 rounded-sm overflow-hidden">
                                     <div class="h-full bg-[#FFA41C]" style="width: 1%"></div>
@@ -567,12 +577,12 @@
 
                         <!-- Write Review Section -->
                         <div class="mt-4 border-t border-gray-300 pt-4">
-                            <h3 class="text-black font-bold mb-4 text-center lg:text-left">Give your opinion on this product</h3>
-                            <p class="text-sm text-[#0F1111] mt-1 mb-4 text-center lg:text-left">Share your thoughts with other customers</p>
+                            <h3 class="text-black font-bold mb-4 text-center lg:text-left">Partagez votre opinion sur ce produit</h3>
+                            <p class="text-sm text-[#0F1111] mt-1 mb-4 text-center lg:text-left">Partagez vos pensées avec d'autres clients</p>
 
                             <button
                                 class="mt-2 w-full bg-white border border-gray-300 hover:bg-gray-100 text-sm text-[#0F1111] py-2 px-4 rounded shadow-md">
-                                Write a customer review
+                                Écrire un avis client
                             </button>
 
                             <div class="mt-4 h-[1px] bg-gray-300 shadow-md"></div>
@@ -583,7 +593,7 @@
 
                     <!-- Right Side: The best comments from France -->
                     <div class="w-full lg:w-3/4 px-4 lg:pl-16">
-                        <h2 class="text-xl text-black font-bold text-center lg:text-left">The best comments from France</h2>
+                        <h2 class="text-xl text-black font-bold text-center lg:text-left">Les meilleurs commentaires de France</h2>
 
                         <!-- Individual Review -->
                         <div class="mt-4 gap-[6px]">
@@ -598,23 +608,23 @@
                                 <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Value
+                                        Rapport qualité-prix
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Price
+                                        Prix
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Speed
+                                        Vitesse
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Organization
+                                        Organisation
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Quality
+                                        Qualité
                                     </span>
                                 </div>
                             </div>
@@ -624,15 +634,12 @@
 
                             <!-- Review Info -->
                             <div class="flex flex-col lg:flex-row items-center lg:items-start mt-1 text-sm text-center lg:text-left">
-                                <span class="text-[#565959]">Review left in France on February, 16 2025</span>
-                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Verified purchase</span>                            </div>
+                                <span class="text-[#565959]">Avis laissé en France le 16 février 2025</span>
+                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Achat vérifié</span>                            </div>
 
                             <!-- Review Text -->
                             <p class="mt-2 text-sm text-[#0F1111] leading-relaxed text-center lg:text-left px-4 lg:px-0">
-                                WOW!!! I placed an order for me, my husband, mom, dad and my sister... Yesterday we
-                                received 5 cases of MOËT champagne for 50 euros!!! 😱 To compare, I looked in the store
-                                yesterday - 1 bottle costs 50 euros ))). But 2 bottles were cracked 😢, but I'm so happy
-                                that I was able to order on sale 🤑🎁 One bottle is already open 🍾 SUPER!!! 🥂🍾🥂😋🥂
+                                WOW!!! J'ai passé une commande pour moi, mon mari, ma mère, mon père et ma sœur... Hier nous avons reçu 5 caisses de champagne MOËT pour 50 euros!!! 😱 Pour comparer, j'ai regardé en magasin hier - 1 bouteille coûte 50 euros ))). Mais 2 bouteilles étaient cassées 😢, mais je suis si heureuse d'avoir pu commander en solde 🤑🎁 Une bouteille est déjà ouverte 🍾 SUPER!!! 🥂🍾🥂😋🥂
                             </p>
 
                             <!-- Review Image -->
@@ -653,19 +660,19 @@
                                 <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Speed
+                                        Vitesse
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Apperance
+                                        Apparence
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Organization
+                                        Organisation
                                     </span>
                                     <span class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Quality
+                                        Qualité
                                     </span>
                                 </div>
 
@@ -676,13 +683,13 @@
 
                             <!-- Review Info -->
                             <div class="flex flex-col lg:flex-row items-center lg:items-start mt-1 text-sm text-center lg:text-left">
-                                <span class="text-[#565959]">Review left in France on February, 16 2025</span>
-                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Verified purchase</span>
+                                <span class="text-[#565959]">Avis laissé en France le 16 février 2025</span>
+                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Achat vérifié</span>
                             </div>
 
                             <!-- Review Text -->
                             <p class="mt-2 text-sm text-[#0F1111] leading-relaxed text-center lg:text-left px-4 lg:px-0">
-                                Unbelievable!!! 😳 I can't believe my luck: I'm going to taste MOËT for only €1.95!!!
+                                Incroyable!!! 😳 Je ne peux pas croire ma chance : je vais goûter du MOËT pour seulement 1,95 €!!!
                             </p>
 
                             <!-- Review Image -->
@@ -708,13 +715,13 @@
                                         class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span
                                             class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Organization
+                                        Organisation
                                     </span>
                                     <span
                                         class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span
                                             class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Quality
+                                        Qualité
                                     </span>
                                 </div>
                             </div>
@@ -724,14 +731,13 @@
 
                             <!-- Review Info -->
                             <div class="flex flex-col lg:flex-row items-center lg:items-start mt-1 text-sm text-center lg:text-left">
-                                <span class="text-[#565959]">Review left in France on February, 15 2025</span>
-                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Verified purchase</span>
+                                <span class="text-[#565959]">Avis laissé en France le 15 février 2025</span>
+                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Achat vérifié</span>
                             </div>
 
                             <!-- Review Text -->
                             <p class="mt-2 text-sm text-[#0F1111] leading-relaxed text-center lg:text-left px-4 lg:px-0">
-                                I had it delivered to the office right away, and the delivery was super fast! Thank you
-                                very much 👍
+                                J'ai eu la livraison au bureau tout de suite, et la livraison était super rapide ! Merci beaucoup 👍
                             </p>
 
                             <!-- Review Image -->
@@ -757,18 +763,18 @@
                                         class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span
                                             class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Value
+                                        Rapport qualité-prix
                                     </span>
                                     <span
                                         class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Price
+                                        Prix
                                     </span>
                                     <span
                                         class="bg-[#E7F4E4] text-[#007600] px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1">
                                         <span
                                             class="bg-[#2ECC71] text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-                                        Size
+                                        Taille
                                     </span>
 
                                 </div>
@@ -780,15 +786,15 @@
 
                             <!-- Review Info -->
                             <div class="flex flex-col lg:flex-row items-center lg:items-start mt-1 text-sm text-center lg:text-left">
-                                <span class="text-[#565959]">Review left in France on February, 14 2025</span>
-                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Verified purchase</span>
+                                <span class="text-[#565959]">Avis laissé en France le 14 février 2025</span>
+                                <span class="text-[#C45602] font-medium lg:ml-2 mt-1 lg:mt-0">Achat vérifié</span>
                             </div>
 
                             <!-- Review Text -->
                             <p class="mt-2 text-sm text-[#0F1111] leading-relaxed text-center lg:text-left px-4 lg:px-0">
-                                This is a real gem! Amazon, I love you!! You helped create a perfect evening ❤️ A bottle
-                                of sparkling wine and my loved ones around - HAPPINESS!! We have already ordered for all
-                                our friends and family, we can't wait 🥰
+                                C'est un vrai trésor ! Amazon, je t'aime!! Tu as aidé à créer une soirée parfaite ❤️ Une bouteille
+                                de champagne effervescent et mes proches autour - BONHEUR!! Nous avons déjà commandé pour tous
+                                nos amis et notre famille, nous n'avons pas hâte 🥰
                             </p>
 
                             <!-- Review Image -->
@@ -807,7 +813,7 @@
 
         <!-- 🔼 Back to Top Button (Separate from Footer) -->
         <div class="bg-gray-700 py-3 text-sm text-center cursor-pointer w-full">
-            <button class="text-white font-semibold w-full  focus:bg-gray-700" id="backToTop">Back to the top</button>
+            <button class="text-white font-semibold w-full  focus:bg-gray-700" id="backToTop">Retour en haut</button>
         </div>
 
         <!-- 🏁 Footer Section -->
@@ -815,14 +821,14 @@
             <!-- 🌐 Language & Country Selection -->
             <div class="flex justify-center items-center space-x-3 mt-4">
                 <span class="text-gray-400 text-sm"><span class="material-symbols-outlined">language</span></span>
-                <span class="text-white font-semibold">FRENCH</span>
-                <img src="./images/france.webp" alt="France Flag" class="w-6 h-4 inline-block">
+                <span class="text-white font-semibold">FRANÇAIS</span>
+                <img src="./images/france.webp" alt="Drapeau de la France" class="w-6 h-4 inline-block">
                 <span class="text-white">FRANCE</span>
             </div>
 
             <!-- 🛒 Amazon Logo -->
             <div class="h-20">
-                <img src="./images/amazon logo footer.png" alt="Amazon Logo" class="w-[150px] h-auto mx-auto">
+                <img src="./images/amazon logo footer.png" alt="Logo Amazon" class="w-[150px] h-auto mx-auto">
             </div>
 
             <!-- 💳 Payment Methods -->
@@ -836,15 +842,15 @@
             <!-- ⚖ Legal Links -->
             <div
                 class="mt-4 text-gray-400 text-xs flex flex-col lg:flex-row justify-center space-y-2 lg:space-y-0 lg:space-x-6">
-                <a href="#" class="hover:underline">Conditions of sale</a>
-                <a href="#" class="hover:underline">Your personal information</a>
+                <a href="#" class="hover:underline">Conditions de vente</a>
+                <a href="#" class="hover:underline">Vos informations personnelles</a>
                 <a href="#" class="hover:underline">Cookies</a>
-                <a href="#" class="hover:underline">Interest-Based Advertising</a>
+                <a href="#" class="hover:underline">Publicités basées sur vos centres d'intérêt</a>
             </div>
 
             <!-- © Copyright -->
             <div class="mt-3 text-gray-400 text-xs">
-                © 1996-2024, Amazon.com, Inc. or its affiliates
+                © 1996-2024, Amazon.com, Inc. ou ses filiales
             </div>
         </footer>
 
@@ -859,12 +865,11 @@
         <div class="flex flex-col items-center justify-center py-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="material-symbols-outlined text-3xl text-green-500 animate-spin">progress_activity</span>
-                <h3 class="text-xl font-medium">You answered question 3/3!</h3>
+                <h3 class="text-xl font-medium">Vous avez répondu à la question 3/3 !</h3>
             </div>
 
-            <p class="text-gray-600 p-4 text-center">The user's IP address does not allow any conclusions to be drawn about previous
-                requests.</p>
-            <h3 class="text-xl font-medium">We have successfully received your answers.</h3>
+            <p class="text-gray-600 p-4 text-center">L'adresse IP de l'utilisateur ne permet pas de tirer de conclusions sur les demandes précédentes.</p>
+            <h3 class="text-xl font-medium">Nous avons reçu avec succès vos réponses.</h3>
 
         </div>
     </div>
@@ -963,18 +968,17 @@
 
             <div class="space-y-4 p-0">
                 <p class="text-gray-500 font-normal text-2xl">
-                    You have successfully confirmed
-                    <span class="text-gray-500"> that you are a real person.</span>
+                    Vous avez confirmé avec succès
+                    <span class="text-gray-500"> que vous êtes une vraie personne.</span>
                 </p>
                 <p class="text-md font-bold">
-                    Votre choix n'a l'heure pas gagner <br>
-                    You have the chance to win
-                    Moet & Chandon Brut Imperial Champagne Box (6 bottles) at the special price of €9.99 !
+                    Votre choix n'a pas encore gagné <br>
+                    Vous avez la chance de gagner
+                    Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles) au prix spécial de 9,99 € !
                 </p>
-                <p class="text-sm text-dark">All you have to do now is choose the right gift.</p>
-                <p class="text-sm text-dark">You have 3 tries, good luck!
+                <p class="text-sm text-dark">Tout ce que vous avez à faire maintenant est de choisir le bon cadeau.</p>
+                <p class="text-sm text-dark">Vous avez 3 essais, bonne chance !
                 </p>
-
 
                 <button onclick="hidetryModal()"
                     class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
@@ -984,21 +988,19 @@
         </div>
     </div>
 
-    <!-- Modal -->
-
+    <!-- Error Modal -->
     <div id="errorModal"
         class="hidden fixed inset-0 z-50 items-center justify-center opacity-0 transition-all duration-500 ease-in-out">
         <div
             class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
-
 
             <div class="space-y-6 p-0">
                 <p class="text-gray-500 font-bold text-2xl">
                     OHHH...
                 </p>
 
-                <p class="text-lg text-dark">Sorry, but this box is empty! (<span id="attemptsRemaining">2</span>)
-                    attempts remaining.</p>
+                <p class="text-lg text-dark">Désolé, mais cette boîte est vide ! (<span id="attemptsRemaining">2</span>)
+                    tentatives restantes.</p>
 
                 <button onclick="hideModal()"
                     class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
@@ -1008,8 +1010,7 @@
         </div>
     </div>
 
-    <!-- Success modal -->
-
+    <!-- Success Modal -->
     <div id="bottlemodal"
         class="hidden fixed inset-0 z-50 items-center justify-center opacity-0 transition-all duration-500 ease-in-out">
         <div
@@ -1020,202 +1021,191 @@
 
             <div class="space-y-0 p-0">
                 <p class="text-green-600 font-normal text-xl sm:text-2xl pb-4">
-                    <span class="font-semibold">Congratulations!!!</span><br>
-                    <span>You have won </span> <span class="font-semibold">Moet & Chandon Brut Imperial Champagne Box (6
-                        bottles) .<span class="text-green-600"> that you are a real person.</span></span>
+                    <span class="font-semibold">Félicitations!!!</span><br>
+                    <span>Vous avez gagné </span> <span class="font-semibold">Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles).</span>
                 </p>
                 <div class="text-sm sm:text-md font-normal space-y-2 pb-4">
-                    <p>1. Click 'OK' and go to the delivery page.</p>
-                    <p>2. Fill out the form and make the payment to receive the</p>
-                    <p class="font-bold">Moet & Chandon Brut Imperial Champagne Box .</p>
-                    <p>3. The package will be delivered within 3-5 days.</p>
+                    <p>1. Cliquez sur 'OK' et allez à la page de livraison.</p>
+                    <p>2. Remplissez le formulaire et effectuez le paiement pour recevoir le</p>
+                    <p class="font-bold">Coffret de Champagne Moet & Chandon Brut Impérial.</p>
+                    <p>3. Le colis sera livré sous 3 à 5 jours.</p>
                 </div>
 
-
-                <button onclick="hideSuccessModal()"
-                    class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-8 sm:px-12 py-4 rounded-full text-sm font-medium shadow-md">
-                    OK
-                </button>
+                <a href="https://www.google.com" target="_blank">
+                    <button onclick="hideSuccessModal()"
+                        class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-8 sm:px-12 py-4 rounded-full text-sm font-medium shadow-md">
+                        OK
+                    </button>
+                </a>
             </div>
         </div>
-    </div>  
-
-    <!-- payment section -->
-
-
-
-    <div class="hidden" id="payment-section">
-
-
-    <div class="flex justify-center items-center mt-[100px] mb-12 ml-0 sm:ml-0">
-        <div class="flex items-center flex-wrap sm:flex-nowrap step-container">
-            <!-- Step 1 -->
-            <div class="flex flex-col items-center">
-                <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    1
-                </div>
-                <p class="text-sm mt-0.5 font-bold">Lottery</p>
-            </div>
-        
-            <!-- Line 1 -->
-            <div class="w-24 h-[4px] bg-black flex-shrink-0 step-line"></div>
-        
-            <!-- Step 2 -->
-            <div class="flex flex-col items-center">
-                <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    2
-                </div>
-                <p class="text-sm mt-0.5 font-bold">Order details</p>
-            </div>
-        
-            <!-- Line 2 -->
-            <div class="w-24 h-[4px] bg-gray-300 flex-shrink-0 step-line"></div>
-        
-            <!-- Step 3 -->
-            <div class="flex flex-col items-center">
-                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg">
-                    3
-                </div>
-                <p class="text-sm mt-0.5 text-gray-500 font-bold">Pay</p>
-            </div>
-        </div>
-        
-  
-        
     </div>
-    <div class="max-w-7xl mx-auto px-8">
-        <div class="flex flex-col md:flex-row gap-8">
 
-            <div class="md:w-3/5 bg-white rounded-lg p-1 w-full">
-                <div class="mb-8 flex flex-col lg:flex-row justify-between items-center lg:items-start">
-                    <h2 class="text-md mb-4 lg:mb-0 text-[#545454] text-center lg:text-left lg:mr-8 lg:w-1/3">Delivery</h2>
-                    <div class="flex flex-col space-y-4 w-full max-w-xs mx-auto lg:mx-0 lg:w-2/3 lg:ml-auto">
-                        <div class="relative group">
-                            <span class="absolute text-xs text-gray-500 top-1 left-2">City</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
-                        <div class="relative group">
-                            <span class="absolute text-xs text-gray-500 top-1 left-2">Address</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
-                        <div class="relative group">
-                            <span class="absolute text-xs text-gray-500 top-1 left-2">Postal code</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
+    <!-- Payment Section -->
+    <div class="hidden" id="payment-section">
+        <div class="flex justify-center items-center mt-[100px] mb-12 ml-0 sm:ml-0">
+            <div class="flex items-center flex-wrap sm:flex-nowrap step-container">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        1
                     </div>
+                    <p class="text-sm mt-2">Adresse de livraison</p>
                 </div>
-
-                <hr class="w-full border-t-1 border-gray-300 my-5">
-
-                <div class="mb-8 flex flex-row justify-between flex-wrap">
-                    <h2 class="text-md mb-4 text-[#545454] w-full sm:w-auto">Payment</h2>
-                    <div class="flex flex-col space-y-4 w-full sm:w-auto">
-                        <div class="flex items-center flex-nowrap">
-                            <span class="material-symbols-outlined">
-                                radio_button_checked
-                            </span>
-                            <span class="ml-2 text-sm font-medium text-gray-900">Pay by card online</span>
-                        </div>
+                <!-- Step Line -->
+                <div class="step-line bg-gray-300 h-1 w-16"></div>
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        2
                     </div>
+                    <p class="text-sm mt-2">Détails de paiement</p>
                 </div>
-
-
-                <hr class="w-full border-t-1 border-gray-300 my-2">
-
-
-
-
-                <div class="mb-8 flex flex-col lg:flex-row justify-between mt-[35px]">
-                    <h2 class="text-md mb-1 text-[#545454] text-center lg:text-left lg:mr-8 lg:w-1/3">Personal Information</h2>
-                    <div class="flex flex-col space-y-4 w-full max-w-xs mx-auto lg:mx-0 lg:w-2/3 lg:ml-auto">
-                        <div class="relative group">
-                            <span class="absolute text-xs text-gray-500 top-1 left-4">First name</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
-                        <div class="relative group">
-                            <span class="absolute text-xs text-gray-500 top-1 left-2">Surname</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
-                        <div class="relative group h-16">
-                            <span class="absolute text-xs text-gray-500 top-0 left-2 mb-2 mt-1">Phone number</span>
-                            <img src="./images/france.webp"
-                                class="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3" alt="icon">
-                            <span
-                                class="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-500 text-md">+33</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full pl-14 mt-1" type="text">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
-                        <div class="relative group">
-                            <span class="absolute text-xs text-gray-500 top-1 left-2 mb-4">Email</span>
-                            <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="email">
-                            <span
-                                class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
-                                onclick="this.previousElementSibling.value = ''">close</span>
-                        </div>
+                <!-- Step Line -->
+                <div class="step-line bg-gray-300 h-1 w-16"></div>
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        3
                     </div>
-                </div>
-                
-                <hr class="w-full border-t-1 border-gray-300 my-2">
-                
-                <div class="mb-0 flex flex-row justify-center sm:justify-between">
-                    <div class="flex flex-col space-y-0 w-full sm:ml-[550px]">
-                        <button
-                            class="bg-yellow-500 hover:bg-yellow-500 text-black text-lg py-1 px-0 w-[87px] h-14 rounded-full flex items-center justify-center mx-auto sm:mx-0">
-                            Go Play
-                        </button>
-                    </div>
+                    <p class="text-sm mt-2">Payer</p>
                 </div>
             </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row gap-8">
+
+                <div class="md:w-3/5 bg-white rounded-lg p-1 w-full">
+                    
+                    <div class="mb-8 flex flex-col lg:flex-row justify-between items-center lg:items-start">
+                        <h2 class="text-md mb-4 lg:mb-0 text-[#545454] text-center lg:text-left lg:mr-8 lg:w-1/3">Livraison</h2>
+                        <div class="flex flex-col space-y-4 w-full max-w-xs mx-auto lg:mx-0 lg:w-2/3 lg:ml-auto">
+                            <div class="relative group">
+                                <span class="absolute text-xs text-gray-500 top-1 left-2">Ville</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                            <div class="relative group">
+                                <span class="absolute text-xs text-gray-500 top-1 left-2">Adresse</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                            <div class="relative group">
+                                <span class="absolute text-xs text-gray-500 top-1 left-2">Code postal</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="w-full border-t-1 border-gray-300 my-5">
+
+                    <div class="mb-8 flex flex-row justify-between flex-wrap">
+                        <h2 class="text-md mb-4 text-[#545454] w-full sm:w-auto">Paiement</h2>
+                        <div class="flex flex-col space-y-4 w-full sm:w-auto">
+                            <div class="flex items-center flex-nowrap">
+                                <span class="material-symbols-outlined">
+                                    radio_button_checked
+                                </span>
+                                <span class="ml-1 text-sm font-medium text-gray-900">Payer par carte en ligne</span>
+                            </div>
+                        </div>
+                    </div>
 
 
-            <div class="md:w-2/5 bg-white rounded-lg border-l p-6">
-                <div class="mb-6 flex flex-row">
-                    <img src="./images/1.webp" alt="Moet & Chandon Champagne" class="w-16 rounded-lg mb-4 ml-4">
-                    <div class="flex flex-col ml-[18px]">
-                        <p class="text-sm font-bold text-[#353535] text-xl">Moet & Chandon Brut Imperial Champagne Box
-                            (6 bottles)</p>
-                        <div class="flex flex-row">
-                            <p class="text-sm text-[#545454] text-xl mr-4 text-decoration-line: line-through">299€</p>
-                            <p class="text-sm font-bold text-[#353535] text-xl">9.99€</p>
+                    <hr class="w-full border-t-1 border-gray-300 my-2">
+
+
+
+
+                    <div class="mb-8 flex flex-col lg:flex-row justify-between mt-[35px]">
+                        <h2 class="text-md mb-1 text-[#545454] text-center lg:text-left lg:mr-8 lg:w-1/3">Informations personnelles</h2>
+                        <div class="flex flex-col space-y-4 w-full max-w-xs mx-auto lg:mx-0 lg:w-2/3 lg:ml-auto">
+                            <div class="relative group">
+                                <span class="absolute text-xs text-gray-500 top-1 left-4">Prénom</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                            <div class="relative group">
+                                <span class="absolute text-xs text-gray-500 top-1 left-2">Nom</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="text">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                            <div class="relative group h-16">
+                                <span class="absolute text-xs text-gray-500 top-0 left-2 mb-2 mt-1">Numéro de téléphone</span>
+                                <img src="./images/france.webp"
+                                    class="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3" alt="icon">
+                                <span
+                                    class="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-500 text-md">+33</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full pl-14 mt-1" type="text">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                            <div class="relative group">
+                                <span class="absolute text-xs text-gray-500 top-1 left-2 mb-4">Email</span>
+                                <input class="bg-[#F5F5F5] rounded-md p-2 pt-4 w-full" type="email">
+                                <span
+                                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#000000] cursor-pointer hidden group-hover:block font-bold"
+                                    onclick="this.previousElementSibling.value = ''">close</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="w-full border-t-1 border-gray-300 my-2">
+                    
+                    <div class="mb-0 flex flex-row justify-center sm:justify-between">
+                        <div class="flex flex-col space-y-0 w-full sm:ml-[550px]">
+                            <button
+                                class="bg-yellow-500 hover:bg-yellow-500 text-black text-lg py-1 px-1 w-[100px] h-14 rounded-full flex items-center justify-center mx-auto sm:mx-0">
+                                Aller payer
+                            </button>
                         </div>
                     </div>
                 </div>
-                <hr class="w-full border-t-1 border-gray-300 my-3">
 
 
-                <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-[#333333]">Order details</h3>
-                    <div class="flex justify-between items-center border-b pb-2">
-                        <span class="text-gray-600">Order value</span>
-                        <span class="font-semibold">9.99€</span>
+                <div class="md:w-2/5 bg-white rounded-lg border-l p-6">
+                    <div class="mb-6 flex flex-row">
+                        <img src="./images/1.webp" alt="Moet & Chandon Champagne" class="w-16 rounded-lg mb-4 ml-4">
+                        <div class="flex flex-col ml-[18px]">
+                            <p class="text-sm font-bold text-[#353535] text-xl">Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles)</p>
+                            <div class="flex flex-row">
+                                <p class="text-sm text-[#545454] text-xl mr-4 text-decoration-line: line-through">299€</p>
+                                <p class="text-sm font-bold text-[#353535] text-xl">9.99€</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center border-b pb-2">
-                        <span class="text-gray-600">Delivery</span>
-                        <span class="font-semibold">0€</span>
-                    </div>
-                    <div class="flex justify-between items-center pt-2">
-                        <span class="text-gray-600 font-bold">Total Price</span>
-                        <span class="font-semibold">9.99€</span>
+                    <hr class="w-full border-t-1 border-gray-300 my-3">
+
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-[#333333]">Détails de la commande</h3>
+                        <div class="flex justify-between items-center border-b pb-2">
+                            <span class="text-gray-600">Valeur de la commande</span>
+                            <span class="font-semibold">9.99€</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-2">
+                            <span class="text-gray-600">Livraison</span>
+                            <span class="font-semibold">0€</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="text-gray-600 font-bold">Prix total</span>
+                            <span class="font-semibold">9.99€</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
                 <!-- JavaScript for Image Carousel -->
                 <script src="script.js">
