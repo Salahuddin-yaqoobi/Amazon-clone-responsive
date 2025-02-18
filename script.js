@@ -79,12 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+document.getElementById('backToTop').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 function nextQuestion(current, next) {
     // Hide current question
     document.getElementById(`question-${current}`).classList.add('hidden');
     // Show next question
     document.getElementById(`question-${next}`).classList.remove('hidden');
 }
+
 function formatDate(date) {
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);

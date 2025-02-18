@@ -1,0 +1,13 @@
+#backToTop {
+    transition: background-color 0.3s ease;
+}
+
+#backToTop:hover {
+    background-color: #555; /* Darker shade for hover effect */
+}
+
+@media (max-width: 640px) {
+    #backToTop {
+        font-size: 0.875rem; /* Adjust font size for small screens */
+    }
+}
