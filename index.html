@@ -127,6 +127,16 @@
                 transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
             }
         }
+
+        /* Add media query for small screens */
+        @media (max-width: 640px) {
+            .step-container {
+                gap: 8px; /* Reduce gap between steps */
+            }
+            .step-line {
+                width: 16px; /* Adjust line width */
+            }
+        }
     </style>
 </head>
 
@@ -1038,34 +1048,40 @@
 
 
     <div class="flex justify-center items-center mt-[100px] mb-12 ml-0 sm:ml-0">
-        
-        <div class="flex items-center flex-wrap sm:flex-nowrap">
-
+        <div class="flex items-center flex-wrap sm:flex-nowrap step-container">
+            <!-- Step 1 -->
             <div class="flex flex-col items-center">
-                <div
-                    class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    1</div>
+                <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    1
+                </div>
                 <p class="text-sm mt-0.5 font-bold">Lottery</p>
             </div>
-
-            <div class="w-24 h-[4px] bg-black mx-1 sm:mx-0" style="margin-top: -12px"></div>
-
+        
+            <!-- Line 1 -->
+            <div class="w-24 h-[4px] bg-black flex-shrink-0 step-line"></div>
+        
+            <!-- Step 2 -->
             <div class="flex flex-col items-center">
-                <div
-                    class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    2</div>
+                <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    2
+                </div>
                 <p class="text-sm mt-0.5 font-bold">Order details</p>
             </div>
-
-            <div class="w-24 h-[4px] bg-gray-300 mx-1 sm:mx-0" style="margin-top: -12px"></div>
-
+        
+            <!-- Line 2 -->
+            <div class="w-24 h-[4px] bg-gray-300 flex-shrink-0 step-line"></div>
+        
+            <!-- Step 3 -->
             <div class="flex flex-col items-center">
-                <div
-                    class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg">
-                    3</div>
+                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg">
+                    3
+                </div>
                 <p class="text-sm mt-0.5 text-gray-500 font-bold">Pay</p>
             </div>
         </div>
+        
+  
+        
     </div>
     <div class="max-w-7xl mx-auto px-8">
         <div class="flex flex-col md:flex-row gap-8">
@@ -1099,19 +1115,19 @@
                 </div>
 
                 <hr class="w-full border-t-1 border-gray-300 my-5">
-                <div class="mb-8 flex flex-row justify-between ">
-                    <h2 class="text-md mb-4 text-[#545454]">Payment</h2>
-                    <div class="flex flex-col space-y-4 ml-[180px] w-full">
-                        <div class="flex items-center">
+
+                <div class="mb-8 flex flex-row justify-between flex-wrap">
+                    <h2 class="text-md mb-4 text-[#545454] w-full sm:w-auto">Payment</h2>
+                    <div class="flex flex-col space-y-4 w-full sm:w-auto">
+                        <div class="flex items-center flex-nowrap">
                             <span class="material-symbols-outlined">
                                 radio_button_checked
-                                </span>
+                            </span>
                             <span class="ml-2 text-sm font-medium text-gray-900">Pay by card online</span>
                         </div>
                     </div>
-
-
                 </div>
+
 
                 <hr class="w-full border-t-1 border-gray-300 my-2">
 
