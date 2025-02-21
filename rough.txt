@@ -1,0 +1,9 @@
+                <!-- Left: Smaller Product Images Section -->
+                <div class="md:w-1/5 flex flex-row lg:flex-col items-center space-x-2 lg:space-x-0 lg:space-y-2 overflow-x-auto lg:overflow-visible px-2 sm:px-4">
+                    <img src="./images/1.webp" 
+                        class="w-12 h-12 sm:w-16 sm:h-16 opacity-60 rounded-lg flex-shrink-0 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    <img src="./images/2.webp"
+                        class="w-12 h-12 sm:w-16 sm:h-16 opacity-60 rounded-lg flex-shrink-0 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    <img src="./images/3.webp"
+                        class="w-12 h-12 sm:w-16 sm:h-16 opacity-60 rounded-lg flex-shrink-0 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                </div>
